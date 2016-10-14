@@ -35,12 +35,13 @@
 	Requirements
 	\begin{itemize}
 		\item You know how to use a computer
+        \item Please bring your computer with You
 		\item Maybe already knowledge in programming languages?
 % 		\item Java is not your first programming language or you are a fast learner
 	\end{itemize}
 	Proceeding
 	\begin{itemize}
-		\item There will be 9 lessons
+		\item There will be ~14 lessons
 		\item Each covers a topic and comes with excercises
 	\end{itemize}
 \end{frame}
@@ -53,31 +54,15 @@
 			\url{http://auditorium.inf.tu-dresden.de}
 		\item StackOverflow, FAQs, Online-tutorials, ... \hfill \\
 		\item Official documentation \hfill \\
-			\url{http://docs.oracle.com/javase/tutorial/java/nutsandbolts/index.html}
+			\url{https://docs.oracle.com/javase/8/}
+        \item mailinglist \url{programmierung@ifsr.de}
+        \item Cyberspace (wednesday 5./6. DS)
 	\end{itemize}
 \end{frame}
 
-\section{About Java}
-\subsection{General information}
-\begin{frame}{Some data about Java}
+\begin{frame}{About Java}
 	\tikzoverlay at (5.7cm,1.7cm) {
-		\includegraphics[width=5cm, height=3cm]{res/java-island.jpg}
-	};
-	\begin{itemize}
-		\item Volcanic island
-		\item Part of Indonesia
-		\item \textbf{Population:} 143 Million
-		\item[] $->$ 57\% of indonesian population
-		\item \textbf{Area:} 138,794 $km^2$
-		\item[] $->$ 13th largest island of the world
-	\end{itemize}
-	
-	
-\end{frame}
-
-\begin{frame}{... the other Java}
-	\tikzoverlay at (5.7cm,1.7cm) {
-		\includegraphics[width=5cm, height=3cm]{res/logo-java.jpg}
+		\includegraphics[width=5cm, height=3cm]{res/logo-java.png}
 	};
 	Pros:
 	\begin{itemize}
@@ -86,12 +71,12 @@
 		\item Platform-independent (JVM)
 		\item Very few external libraries
 		\item[] $->$ Easy to use and very little to worry about
-	\end{itemize}	
+	\end{itemize}
 \end{frame}
 
-\begin{frame}{... the other Java}
+\begin{frame}{About Java}
 	\tikzoverlay at (5.7cm,1.7cm) {
-		\includegraphics[width=5cm, height=3cm]{res/logo-java.jpg}
+		\includegraphics[width=5cm, height=3cm]{res/logo-java.png}
 	};
 	Cons:
 	\begin{itemize}
@@ -101,102 +86,94 @@
 		\item Weak generics
 		\item Mediocre support for other programming paradigms
 		\item[] $->$ Neither fast, small nor geeky
-	\end{itemize}	
+	\end{itemize}
 \end{frame}
-% 
-% \section{Your first program}
-% \subsection{Setting up Eclipse}
-% 
-% \begin{frame}{Receive a copy of Eclipse}
-% 	Eclipse is a powerful IDE\footnote{Integrated Development Environment}, e.g. for Java.
-% 	\begin{itemize}
-% 		\item You can download a Windows version at \\
-% 			\url{http://www.eclipse.org}
-% 		\item Use the package-manager of your Linux distribution
-% 	\end{itemize}
-% 	Eclipse is free and open-source.
-% \end{frame}
-% 
-% \begin{frame}{Create a new project}
-% 	\begin{enumerate}
-% 		\item \menu[,]{File, New, Java Project}
-% 		\item Name your project \dots
-% 		\item \dots and press the \keys{Finish} button
-% 	\end{enumerate}
-% \end{frame}
-% 
-% \begin{frame}{Example project \emph{Hello}}
-% 	\includegraphics[width=25em]{res/intro_eclipse.png}
-% \end{frame}
-% 
-% \begin{frame}{Creating a class}
-% 	On the left side is the \emph{Package Explorer}. \\
-% 	It contains a list of all your projects. \\
-% 	The center frame ist the actual editor. \\
-% 	The \emph{Console} and error log for \emph{Problems} is located at the bottom.
-% 	\begin{enumerate}
-% 		\item Right click at your project in the Package Explorer \hfill \\
-% 			\menu[,]{New, Class}
-% 		\item Name your class \\
-% 			\emph{Class names always start with a capital letter!}
-% 		\item Press the \keys{Finish} button
-% 	\end{enumerate}
-% \end{frame}
-% 
-% \subsection{Hello World!}
-% 
-% \begin{frame}[fragile]{Hello World!}
-% 	This is an empty class after generating:
-% 	\begin{lstlisting}
-% 	public class Hello {
-% 	
-% 	}
-% 	\end{lstlisting}
-% \end{frame}
-% 
-% \begin{frame}[fragile]{Hello World!}
-% 	This is a small program printing \emph{Hello World!} to the console:
-% 	\begin{lstlisting}
-% 	public class Hello {
-% 	    public static void main(String[] args) {
-% 	        System.out.println("Hello World!");
-% 	    }
-% 	}
-% 	\end{lstlisting}
-% \end{frame}
-% 
-% \begin{frame}[fragile]{Hello World!}
-% 	\begin{lstlisting}
-% 	public class Hello {
-% 	    public static void main(String[] args) {
-% 	        System.out.println("Hello World!");
-% 	    }
-% 	}
-% 	\end{lstlisting}
-% 	Run the program by clicking the green run button: \\
-% 	\includegraphics[width=10em]{res/intro_run.png} \\
-% 	Or press \keys{\ctrl + F11}
-% \end{frame}
-% 
-% \begin{frame}[fragile]{Comments}
-% 	\begin{lstlisting}
-% 	public class Hello {
-% 	    // prints a "Hello World!" on your console
-% 	    public static void main(String[] args) {
-% 	        System.out.println("Hello World!");
-% 	    }
-% 	}
-% 	\end{lstlisting}
-% 	You should always comment your code. \\
-% 	Code is read more often than it is written.
-% 	\begin{itemize}
-% 		\item // single line comment
-% 		\item /* comment spanning \\
-% 			multiple lines */
-% 	\end{itemize}
-% \end{frame}
+
+ \section{Your first program}
+ \begin{frame}{Hello World}
+    DEMO
+ \end{frame}
+
+ \begin{frame}{Creating your Working Environment}
+    Open the Terminal
+    \begin{lstlisting}
+        mkdir myProgram
+        cd myProgram
+        touch Hello.java
+        vim Hello.java
+    \end{lstlisting}
+ \end{frame}
+
+ \subsection{Hello World!}
+
+ \begin{frame}[fragile]{Hello World!}
+ 	This is an empty JavaClass.
+    Java Classes always start with a capital letter
+ 	\begin{lstlisting}
+ 	public class Hello {
+
+ 	}
+ 	\end{lstlisting}
+ \end{frame}
+
+ \begin{frame}[fragile]{Hello World!}
+ 	This is a small program printing \emph{Hello World!} to the console:
+ 	\begin{lstlisting}
+ 	public class Hello {
+ 	    public static void main(String[] args) {
+ 	        System.out.println("Hello World!");
+ 	    }
+ 	}
+ 	\end{lstlisting}
+ \end{frame}
+
+ \begin{frame}[fragile]{How to run your program}
+     save your program by pressing 'esc', then ':w'
+     exit vim by typing ':q' (and hit return)
+     then:
+     \begin{lstlisting}[language=bash]
+        javac Hello.java
+        java Hello
+     \end{lstlisting}
+ \end{frame}
+
+ \subsection{Setting up IntelliJ IDEA}
+
+ \begin{frame}{Hello World in an IDE}
+     DEMO
+ \end{frame}
+
+ \begin{frame}{Receive a copy of IntelliJ IDEA}
+    IntelliJ IDEA is a powerful IDE\footnote{Integrated Development Environment}, e.g. for Java.
+    \begin{itemize}
+        \item You can download IntelliJ IDEA at  \\
+            \url{https://www.jetbrains.com/idea/}
+        \item Get an Ultimate-License at \\
+            \url{https://www.jetbrains.com/student/}
+        \item Use JetBrains IDEs for all programming languages
+    \end{itemize}
+    Ecplipse is free and open-source, but less powerful.
+ \end{frame}
 
 \section{Basics}
+
+\begin{frame}[fragile]{Comments}
+   \begin{lstlisting}
+   public class Hello {
+       // prints a "Hello World!" on your console
+       public static void main(String[] args) {
+           System.out.println("Hello World!");
+       }
+   }
+   \end{lstlisting}
+   You should always comment your code. \\
+   Code is read more often than it is written.
+   \begin{itemize}
+       \item // single line comment
+       \item /* comment spanning \\
+           multiple lines */
+   \end{itemize}
+\end{frame}
 
 \subsection{Some definitions}
 
@@ -204,13 +181,13 @@
 	\begin{lstlisting}
 	public class Hello {
 	    // Calculates some stuff and outputs everything on the console
-	    public static void main(String[] args) {	        
+	    public static void main(String[] args) {
 	        int x;
 	        x = 9;
 	        int y = 23;
 	        int z;
 	        z = x * y;
-	        
+
 	        System.out.println(z);
 	    }
 	}
@@ -221,7 +198,7 @@
 	\begin{lstlisting}
 	public class Hello {
 	    // Calculates some stuff and outputs everything on the console
-	    public static void main(String[] args) {	        
+	    public static void main(String[] args) {
 	        System.out.println(9 * 23);
 	    }
 	}
@@ -280,7 +257,7 @@
 	    	int a = 0; // not very meaningful
 	    	float myFloat = 5.3f; // also not meaningfull
 	    	int count = 7; // quite a good name
-	    	
+
 	    	int rotationCount = 7; // there you go
 	    }
 	}
@@ -426,7 +403,7 @@
 	    	int factorA = 3;
 	    	int factorB = 7;
 	    	int product = factorA * factorB;
-	    	String answer = 
+	    	String answer =
 	            factorA + " * " + factorB + " = " + product;
 	        System.out.println(answer); // prints: 3 * 7 = 21
 	    }
