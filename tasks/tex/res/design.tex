@@ -1,0 +1,28 @@
+\documentclass[12pt]{book}
+\usepackage[utf8x]{inputenc}
+\usepackage[usenames, dvipsnames]{color}
+
+\usepackage{url}
+
+\usepackage{titlesec}
+% to change titles font family
+\usepackage{titling}
+
+
+%%% declare fonts and set some formats
+% fontspec to use non-latex with xetex
+\usepackage{xunicode}
+\usepackage{fontspec}
+\usepackage{xltxtra}
+
+% font declaration and title settings
+\newfontfamily\headingfont[]{Arial}
+\titleformat{\chapter}[display]
+  {\huge\headingfont}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat*{\section}{\Large\headingfont\color{DarkRed}}
+\titleformat*{\subsection}{\Large\headingfont}
+\renewcommand{\maketitlehooka}{\headingfont}
+
+\definecolor{DarkRed}{RGB}{184, 26, 44}
+
+\pagenumbering{Roman}

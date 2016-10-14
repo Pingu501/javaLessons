@@ -1,45 +1,29 @@
-\documentclass[a4paper, 12pt]{scrartcl}
-\usepackage{ucs}
-\usepackage[utf8x]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{titlesec}
- \usepackage{mathptmx}
- \usepackage[scaled=.90]{helvet}
- \usepackage{courier}
-
-\title{Temprature}
-\author{}
-\date{}
-\pagenumbering{Roman}
-
+\input{res/design.tex}
 
 \begin{document}
-\raggedright {
-    \Huge {
-        {\fontfamily{cmss}\selectfont
-            Temprature
-            \vspace{2cm}     
-               
-        }
-    }
+\chapter*{Temperature}
+
+\headingfont
+\parbox {\textwidth}{
+    \textbf{Difficulty}: Easy \\
+    \textbf{Requirements}: You can compile and run a Java program. \\
+    \textbf{Goal}: Basic Calculations
 }
-\framebox {
-    \parbox {\textwidth}{
-        \textbf{Schwierigkeit}: leicht \\
-        \textbf{Voraussetzungen}: Umgang mit einer Java IDE \\
-        \textbf{Lernziel}: Grundlegendes Rechnen
-    }
-}
+\normalfont
+\begin{center}
+\line(1,0){500}
+\end{center}
 \vspace{1cm}
 
- \section*{Lessions}
- Convert 20°C, 40°C and 120°C into fahrenheit. \\
- Print the results on the console.
- 
- \section*{Hints}
- \begin{itemize}
-     \item For the conversion: %http://de.wikipedia.org/wiki/Grad_Fahrenheit/
+\section*{Lessions}
+Convert 20°C, 40°C and 120°C into fahrenheit. \\
+Print the results on the console.
+
+\section*{Hints}
+\begin{itemize}
+     \item For the conversion: 
+         \url{http://de.wikipedia.org/wiki/Grad_Fahrenheit/}
      \item Check your solution: 30°C = 86°F
 \end{itemize}
- 
+
 \end{document}
