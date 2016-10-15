@@ -46,7 +46,7 @@
 	\end{itemize}
 \end{frame}
 
-\subsection{Resources}
+% \subsection{Resources}
 \begin{frame}{Some resources}
 	\begin{itemize}
 		\item You can ask your tutor
@@ -61,8 +61,8 @@
 \end{frame}
 
 \begin{frame}{About Java}
-	\tikzoverlay at (5.7cm,1.7cm) {
-		\includegraphics[width=5cm, height=3cm]{res/logo-java.png}
+	\tikzoverlay at (7cm,1.4cm) {
+		\includegraphics[width=3cm, height=3cm]{res/logo-java.png}
 	};
 	Pros:
 	\begin{itemize}
@@ -75,8 +75,8 @@
 \end{frame}
 
 \begin{frame}{About Java}
-	\tikzoverlay at (5.7cm,1.7cm) {
-		\includegraphics[width=5cm, height=3cm]{res/logo-java.png}
+	\tikzoverlay at (7cm,1.4cm) {
+		\includegraphics[width=3cm, height=3cm]{res/logo-java.png}
 	};
 	Cons:
 	\begin{itemize}
@@ -89,71 +89,71 @@
 	\end{itemize}
 \end{frame}
 
- \section{Your first program}
- \begin{frame}{Hello World}
-    DEMO
- \end{frame}
+\section{Your first program}
+\begin{frame}{Hello World}
+  DEMO
+\end{frame}
 
- \begin{frame}{Creating your Working Environment}
-    Open the Terminal
-    \begin{lstlisting}
-        mkdir myProgram
-        cd myProgram
-        touch Hello.java
-        vim Hello.java
-    \end{lstlisting}
- \end{frame}
+\begin{frame}[fragile]{Creating your Working Environment}
+  Open the Terminal
+  \begin{lstlisting}
+      mkdir myProgram
+      cd myProgram
+      touch Hello.java
+      vim Hello.java
+  \end{lstlisting}
+\end{frame}
 
- \subsection{Hello World!}
+\subsection{Hello World!}
 
- \begin{frame}[fragile]{Hello World!}
- 	This is an empty JavaClass.
-    Java Classes always start with a capital letter
- 	\begin{lstlisting}
- 	public class Hello {
+\begin{frame}[fragile]{Hello World!}
+	This is an empty JavaClass.
+  Java Classes always start with a capital letter
+	\begin{lstlisting}
+	public class Hello {
 
- 	}
- 	\end{lstlisting}
- \end{frame}
+	}
+	\end{lstlisting}
+\end{frame}
 
- \begin{frame}[fragile]{Hello World!}
- 	This is a small program printing \emph{Hello World!} to the console:
- 	\begin{lstlisting}
- 	public class Hello {
- 	    public static void main(String[] args) {
- 	        System.out.println("Hello World!");
- 	    }
- 	}
- 	\end{lstlisting}
- \end{frame}
+\begin{frame}[fragile]{Hello World!}
+	This is a small program printing \emph{Hello World!} to the console:
+	\begin{lstlisting}
+	public class Hello {
+	    public static void main(String[] args) {
+	        System.out.println("Hello World!");
+	    }
+	}
+	\end{lstlisting}
+\end{frame}
 
- \begin{frame}[fragile]{How to run your program}
-     save your program by pressing 'esc', then ':w'
-     exit vim by typing ':q' (and hit return)
-     then:
-     \begin{lstlisting}[language=bash]
-        javac Hello.java
-        java Hello
-     \end{lstlisting}
- \end{frame}
+\begin{frame}[fragile]{How to run your program}
+   save your program by pressing 'esc', then ':w'
+   exit vim by typing ':q' (and hit return)
+   then:
+   \begin{lstlisting}[language=bash]
+      javac Hello.java
+      java Hello
+   \end{lstlisting}
+\end{frame}
 
- \subsection{Setting up IntelliJ IDEA}
+\subsection{Setting up IntelliJ IDEA}
 
- \begin{frame}{Hello World in an IDE}
-     DEMO
- \end{frame}
+\begin{frame}{Hello World in an IDE}
+   DEMO
+\end{frame}
 
- \begin{frame}{Receive a copy of IntelliJ IDEA}
-    IntelliJ IDEA is a powerful IDE\footnote{Integrated Development Environment}, e.g. for Java.
-    \begin{itemize}
-        \item You can download IntelliJ IDEA at  \\
-            \url{https://www.jetbrains.com/idea/}
-        \item Get an Ultimate-License at \\
-            \url{https://www.jetbrains.com/student/}
-        \item Use JetBrains IDEs for all programming languages
-    \end{itemize}
-    Ecplipse is free and open-source, but less powerful.
- \end{frame}
+\begin{frame}{Receive a copy of IntelliJ IDEA}
+  IntelliJ IDEA is a powerful IDE\footnote{Integrated Development Environment}, e.g. for Java.
+  \begin{itemize}
+      \item You can download IntelliJ IDEA at  \\
+          \url{https://www.jetbrains.com/idea/}
+      \item Get an Ultimate-License at \\
+          \url{https://www.jetbrains.com/student/}
+      \item Use JetBrains IDEs for all programming languages
+  \end{itemize}
+  Ecplipse is free and open-source, but less powerful.
+\end{frame}
 
 \section{Basics}
 
@@ -181,13 +181,13 @@
 	\begin{lstlisting}
 	public class Hello {
 	    // Calculates some stuff and outputs everything on the console
-	    public static void main(String[] args) {
+	    public static void main(String[] args) {	        
 	        int x;
 	        x = 9;
 	        int y = 23;
 	        int z;
 	        z = x * y;
-
+	        
 	        System.out.println(z);
 	    }
 	}
@@ -267,34 +267,34 @@
 \subsection{Calculating}
 
 \begin{frame}[fragile, allowframebreaks]{Calculating with \emph{int}}
-% 	\begin{lstlisting}
-% 	public class Calc {
-% 	    public static void main(String[] args) {
-% 	        int a; // declare variable a
-% 	        a = 7; // assign 7 to variable a
-% 	        System.out.println(a); // prints: 7
-% 	        a = 8;
-% 	        System.out.println(a); // prints: 8
-% 	        a = a + 2;
-% 	        System.out.println(a); // prints: 10
-% 	    }
-% 	}
-% 	\end{lstlisting}
-% 	After the first assignment the variable is initialized.
-% \framebreak
-% 	\begin{lstlisting}
-% 	public class Calc {
-% 	    public static void main(String[] args) {
-% 	        int a = -9; // declaration and assignment of a
-% 	        int b; // declaration of b
-% 	        b = a; // assignment of b
-% 	        System.out.println(a); // prints: -9
-% 	        System.out.println(b); // prints: -9
-% 	        a++; // increments a
-% 	        System.out.println(a); // prints: -8
-% 	    }
-% 	}
-% 	\end{lstlisting}
+	\begin{lstlisting}
+	public class Calc {
+	    public static void main(String[] args) {
+	        int a; // declare variable a
+	        a = 7; // assign 7 to variable a
+	        System.out.println(a); // prints: 7
+	        a = 8;
+	        System.out.println(a); // prints: 8
+	        a = a + 2;
+	        System.out.println(a); // prints: 10
+	    }
+	}
+	\end{lstlisting}
+	After the first assignment the variable is initialized.
+\framebreak
+	\begin{lstlisting}
+	public class Calc {
+	    public static void main(String[] args) {
+	        int a = -9; // declaration and assignment of a
+	        int b; // declaration of b
+	        b = a; // assignment of b
+	        System.out.println(a); // prints: -9
+	        System.out.println(b); // prints: -9
+	        a++; // increments a
+	        System.out.println(a); // prints: -8
+	    }
+	}
+	\end{lstlisting}
 % \framebreak
 % 	\begin{lstlisting}
 % 	public class Calc {
@@ -310,6 +310,7 @@
 % 	\emph{Always assign your variables!}
 % \framebreak
 
+\framebreak
 	Some basic mathematical operations:
 	\begin{tabular}{ll}
 		Addition & \texttt{a + b;} \\
