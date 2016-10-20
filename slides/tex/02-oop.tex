@@ -1,44 +1,18 @@
-\input{res/slide_header.tex}
+\input{../templates/course_definitions}
+\input{../templates/course_information}
 
 \title{Java}
 \subtitle{Controll Statements \& OOP}
-\author{FSR Informatik}
 \date{\today}
-
-\tikzset{
-  every overlay node/.style={
-    draw=black,fill=white,rounded corners,anchor=north west,
-  },
-}
-% Usage:
-% \tikzoverlay at (-1cm,-5cm) {content};
-% or
-% \tikzoverlay[text width=5cm] at (-1cm,-5cm) {content};
-\def\tikzoverlay{%
-   \tikz[baseline,overlay]\node[every overlay node]
-}%
-
-\lstset{language=Java,
-	basicstyle=\ttfamily\footnotesize,
-	keywordstyle=\color{purple},
-	commentstyle=\color{darkgreen},
-	numberstyle=\tiny\color{gray},
-	stringstyle=\color{blue},
-	tabsize=4,
-	showstringspaces=false,
-	breaklines=true,
-	keepspaces=true,
-	numbers=left,
-	escapechar=§
-}
 
 \begin{document}
 
 \begin{frame}
-\titlepage
+	\titlepage
 \end{frame}
 \begin{frame}{Overview}
-\tableofcontents
+	\setbeamertemplate{section in toc}[sections numbered]
+	\tableofcontents
 \end{frame}
 
 \section{Recalling last session}

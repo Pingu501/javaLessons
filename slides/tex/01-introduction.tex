@@ -1,23 +1,10 @@
-\input{res/slide_header.tex}
-\usepackage{tikz}
+\input{../templates/course_definitions}
+\input{../templates/course_information}
 
 \title{Java}
 \subtitle{Introduction}
-\author{FSR Informatik}
 \date{\today}
 
-\tikzset{
-  every overlay node/.style={
-    draw=black,fill=white,rounded corners,anchor=north west,
-  },
-}
-% Usage:
-% \tikzoverlay at (-1cm,-5cm) {content};
-% or
-% \tikzoverlay[text width=5cm] at (-1cm,-5cm) {content};
-\def\tikzoverlay{%
-   \tikz[baseline,overlay]\node[every overlay node]
-}%
 
 \begin{document}
 
@@ -26,6 +13,7 @@
 	\titlepage
 \end{frame}
 \begin{frame}{Overview}
+	\setbeamertemplate{section in toc}[sections numbered]
 	\tableofcontents
 \end{frame}
 
@@ -63,9 +51,9 @@
 \end{frame}
 
 \begin{frame}{About Java}
-	\tikzoverlay at (7cm,1.4cm) {
-		\includegraphics[width=3cm, height=3cm]{res/logo-java.png}
-	};
+	% \tikzoverlay at (7cm,1.4cm) {
+	% 	\includegraphics[width=3cm, height=3cm]{res/logo-java.png}
+	% }
 	Pros:
 	\begin{itemize}
 		\item Syntax like C++
@@ -77,9 +65,9 @@
 \end{frame}
 
 \begin{frame}{About Java}
-	\tikzoverlay at (7cm,1.4cm) {
-		\includegraphics[width=3cm, height=3cm]{res/logo-java.png}
-	};
+	% \tikzoverlay at (7cm,1.4cm) {
+	% 	\includegraphics[width=3cm, height=3cm]{res/logo-java.png}
+	% }
 	Cons:
 	\begin{itemize}
 		\item A lot of unnecessary features \\ in the JDK
