@@ -143,14 +143,7 @@ public class WhileExample {
 
 \begin{frame}{}
 	\begin{center}
-		{\huge Class vs Instances}
-		%	Object-instance can be named Peter
-		%	Object-class can be put into an encyclopedia
-		% Example: (Show ticket, name it Peter) is an instance, Viererticket is a class
-		%   Class is like a blueprint, Instance is the existing object
-		%	This is why instance is sometimes refered to as an object
-		% Go back to images and let them identify classes
-		% Then let them identify classes in a student enrollment system (Student should be amongh that)
+		{\huge Object Oriented Programming}
 	\end{center}
 \end{frame}
 
@@ -164,12 +157,13 @@ public class Student {
 	private String name; 
 	private int matriculationNumber; 
 	
-	/**
-	 * Changes the name
-	 * @param name The new name of the student
-	 */
+	
+	//Methods
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getMatriculationNumber() {
+		return matriculationNumber;
 	}
 }
 \end{lstlisting}
@@ -196,7 +190,7 @@ public class Student {
 		// create an instance of Student
 	\end{lstlisting}
 	The \textbf{object} derived from a \textbf{class} is also called \textbf{instance}.
-	The variable\footnote{in this listing \emph{example}} is called the \textbf{reference}.
+	The variable is called the \textbf{reference}.
 \end{frame}
 
 \subsection{Methods}
@@ -205,13 +199,14 @@ public class Student {
 	public class Student {
 		private String name;
 	
+		public String getName() {
+        	return name;
+    	}
+		
 	    public void setName(String newName) {
 			name = newName;
 	    }
-	    
-	    public void printName() {
-	        System.out.println(name);
-	    }
+	   
 	}
 	\end{lstlisting}
 	The class \emph{Student} has two methods: \emph{void printTimetable()} and \emph{void printName()}.
@@ -219,14 +214,14 @@ public class Student {
 
 \begin{frame}[fragile]{Calling a Method}
 \begin{lstlisting}
-	public class Main {
-	    
-	    public static void main(String[] args) {
-	        Student example = new Student(); // creation
-	        example.setName("Jane"); // method call
-	        example.printName(); // Prints "Jane"
-	    }
-	}
+public class Main {
+    public static void main(String[] args) {
+        Student example = new Student(); // creation
+        example.setName("Jane"); // method call
+        String name = example.getName(); 
+		System.out.println(name); // Prints "Jane"
+    }
+}
 	\end{lstlisting}
 	You can call a method of an object after its creation with \textbf{reference.methodName();}.
 \end{frame}
@@ -236,7 +231,7 @@ public class Student {
 	public class Student {
 		private String name;
 	
-	    public void changeName(String newName) {
+	    public void setName(String newName) {
 			name = newName;
 			printName();   // Call own method
 			this.printName(); // Or this way
@@ -251,22 +246,22 @@ public class Student {
 \end{frame}
 
 \begin{frame}[fragile]{Methods with Arguments}
-	You can call a method with e.g. two arguments via \texttt{methodName(arg1, arg2)}.
-	\begin{lstlisting}
-	public class Calc {
-	
-	    public void add(int summand1, int summand2) {
-	        System.out.println(summand1 + summand2);
-	    }
+
+\begin{lstlisting}
+public class Calc {
+    public void add(int summand1, int summand2) {
+        System.out.println(summand1 + summand2);
+    }
 	    
-	    public static void main(String[] args) {
-	        int summandA = 1;
-	        int summandB = 2;
-	        Calc calculator = new Calc();
-	        System.out.print("1 + 2 = ");
-	        calculator.add(summandA, summandB); // prints: 3
-	    }
-	}
+    public static void main(String[] args) {
+        int summandA = 1;
+        int summandB = 2;
+        Calc calculator = new Calc();
+        System.out.print("1 + 2 = ");
+        calculator.add(summandA, summandB); 
+		// prints: 3
+    }
+}
 	\end{lstlisting}
 \end{frame}
 
@@ -298,7 +293,8 @@ public class Student {
 	    public static void main(String[] args) {
 	        Calc calculator = new Calc();
 	        int sum = calculator.add(3, 8);
-	        System.out.print("3 + 8 = " + sum); // prints: 3 + 8 = 11
+	        System.out.print("3 + 8 = " + sum); 
+			// prints: 3 + 8 = 11
 	    }
 	}
 	\end{lstlisting}
@@ -358,45 +354,14 @@ public class Student {
 %	Show prepared classes in Java
 \end{frame}
 
-\begin{frame}{Your task}
 
-\begin{itemize}
-	\item Hope for your tutor to send the classes he showed
-	\item Open+compile them in Eclipse
-	\item Look at them, find something I did not explain yet ;-)
-	\item Add 3 more methods to any of the classes
-	\item Add 3 more fields and use them in your methods
-	\item Call at least 1 of the methods in a given one
-\end{itemize}
-
+\begin{frame}[fragile]{Class \emph{Student}}
+\begin{lstlisting}
+public static void main(String[] args) {
+	Student peter = new Student();
+	peter.changeName("Peter");
+}
+\end{lstlisting}
 \end{frame}
-
-
-% \begin{frame}[fragile]{Class \emph{Student}}
-% \begin{lstlisting}
-% /**
-%  * Main method
-%  */
-% public static void main(String[] args) {
-% 	Student peter = new Student();
-% 	peter.changeName("Peter");
-% }
-% \end{lstlisting}
-% \end{frame}
-
-\subsection{Credits}
-
-\begin{frame}{Images stolen at:}
-	\tiny
-	\begin{itemize}
-		\item \textbf{Shire image} Taken from film Lord of the Ring - The Fellowship of the Ring
-		\item \textbf{Grass schema} By Thorsten Schmidt, via Wikimedia Commons
-		\item \textbf{Ticket-vending-machine} By Thorsten Schmidt, via Wikimedia Commons
-	\end{itemize}
-	
-\end{frame}
-
-% Next lesson: Using classes provided in Java
-
 
 \end{document}
