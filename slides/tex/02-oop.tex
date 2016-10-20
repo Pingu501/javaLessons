@@ -1,8 +1,8 @@
 \input{res/slide_header.tex}
 
 \title{Java}
-\subtitle{Object-Oriented Programming}
-\author{Nico Westerbeck}
+\subtitle{Controll Statements \& OOP}
+\author{FSR Informatik}
 \date{\today}
 
 \tikzset{
@@ -41,100 +41,109 @@
 \tableofcontents
 \end{frame}
 
-\section{Introduction}
-\subsection{Recalling last session}
-\begin{frame}{Java-tools}
+\section{Recalling last session}
+\begin{frame}{Conclusion}
 	Datatypes
 	\begin{itemize}
 		\item int, long
 		\item float, double
 		\item String
 	\end{itemize}
-	Control statemenets
+	Hello World example
+\end{frame}
+
+\section{Controll Statements}
+\begin{frame}{Controll Statements}
+	
 	\begin{itemize}
-		\item if, else if, else
-		\item while
+		\item if, else, else if
 		\item for
+		\item while
 	\end{itemize}
-\end{frame}
-
-\begin{frame}{Mind-tools}
-	\begin{center}
-		{\huge Think in code!}
-		% Key of imperative programming: Breaking down a complex command into a sequence of easier ones
-		% Know, which commands already exist
-		% Know, what you have to store (variables)
 		
-		% Tasks for audience to answer "in code":
-		% Example: Count the number of 'e' in a String
-		% Remove all uppercase letters within a String and add them to the end of that String
-		% Check if Random class is fair when generating numbers between 0 and 5
-		% Take a speed in km/h and output the miles/h version and vice versa
-		% Check if a password-String contains a number, a lowercase-letter and an uppercase letter
-		% Check if a (small) number is a prime number
-		% Check if String is palindrome
-		% Zahlenraten!
-	\end{center}
 \end{frame}
 
-\subsection{Think in Objects}
+\subsection{Ite}
+\begin{frame}[fragile]{{\huge I}f {\huge T}hen {\huge E}lse}
+\begin{lstlisting}
+if(condition) {
+	//do something if condition is true
+} else if(another condition){
+	//do if "else if" condition is true 
+} else {
+	//otherwise do this
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{{\huge I}f {\huge T}hen {\huge E}lse example}
+\begin{lstlisting}
+public class IteExample {
+	public static void main(String[] args) {
+		int myNumber = 5;
+		
+		if(myNumber == 3) {
+			System.out.println("Strange number");
+		} else if(myNumber == 2) {
+			System.out.println("Unreachable code");
+		} else {
+			System.out.println("Will be printed");
+		}
+	}
+}
+\end{lstlisting}
+\end{frame}
+
+\subsection{for}
+\begin{frame}[fragile]{for}
+\begin{lstlisting}
+for(initial value, condition, change) {
+	//do code while condition is true
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{for example}
+\begin{lstlisting}
+public class ForExample {
+	public static void main(String[] args) {
+		for(int i = 0; i <= 10; i++) {
+			System.out.print("na ");
+		}
+		System.out.println("BATMAN!");
+	}
+}
+\end{lstlisting}
+\end{frame}
+
+\subsection{while}
+\begin{frame}[fragile]{while}
+\begin{lstlisting}
+while(condition) {
+	//do code while condition is true
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{while example}
+\begin{lstlisting}
+public class WhileExample {
+	public static void main(String[] args) {
+		int a = 0;
+		while(a <= 10) {
+			System.out.println(a);
+		}
+	}
+}
+\end{lstlisting}
+\end{frame}
+
+
+\section{OOP in Java}
 
 \begin{frame}{}
 	\begin{center}
-		\uncover<1-2>{\huge Think in objects!}
-		% The representation of a certain class of contributors in a problem.
-		% What is a
-		
-		% Instance vs Object
-		
-		\uncover<2-2>{\vspace{0.5cm}\normalsize The representation of a certain contributor to a problem}
-		
-		% Problem:
-		%	- Your task, that you want to solve with Java
-		%	- Since problem is negative, let's call it challenge ;)
-		
-		% Contributors:
-		%	- Things that you need to think about/that get noted if you write down your problem
-		%	- Have a state and a behaviour within the challenge
-		%	- Fairytale-rule: Everything that could get a name, if you make a fairytale out of your challenge, is an object
-
-		% Representation:
-		% 	- Limited to the possibilities of the programming language:
-		% 	- State = Fields, Variables
-		%	- Behaviour = Methods
-		%	- Can only be an instance of a class
-		%	- Dafuq is a class and an instance? Later...
-		
-		% Let them identify some objects on next slides:
-	\end{center}
-\end{frame}
-
-\section{Identifying objects}
-\subsection{Examples}
-
-\begin{frame}{}
-	\begin{center}
-		\includegraphics[width=11cm]{res/lotr-shire.jpg}
-	\end{center}
-\end{frame}
-
-\begin{frame}{}
-	\begin{center}
-		\includegraphics[height=7cm]{res/grass-plant.png}
-	\end{center}
-\end{frame}
-
-\begin{frame}{}
-	\begin{center}
-		\includegraphics[height=7cm]{res/ticket-vending-machine.jpg}
-	\end{center}
-\end{frame}
-
-\subsection{Class vs Instance}
-
-\begin{frame}{}
-	\begin{center}
-		{\huge Class vs Instances - the Peter-rule}
+		{\huge Class vs Instances}
 		%	Object-instance can be named Peter
 		%	Object-class can be put into an encyclopedia
 		% Example: (Show ticket, name it Peter) is an instance, Viererticket is a class
@@ -145,7 +154,6 @@
 	\end{center}
 \end{frame}
 
-\section{OOP in Java}
 \subsection{General information}
 
 \begin{frame}[fragile]{Class \emph{Student}}
@@ -160,7 +168,7 @@ public class Student {
 	 * Changes the name
 	 * @param name The new name of the student
 	 */
-	public void changeName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 }
@@ -175,14 +183,17 @@ public class Student {
 
 \begin{frame}[fragile]{Creation}
 	We learned how to declare and assign a primitive datatype.
+	
 	\begin{lstlisting}
 	    int a; // declare a
 	    a = 273; // assign 273 to a
 	\end{lstlisting} 
+	
 	The creation of an object works similar.
+	
 	\begin{lstlisting}
-	    Student example; // declare example
-	    example = new Student(); // create an instance of Student
+	    Student example = new Student(); 
+		// create an instance of Student
 	\end{lstlisting}
 	The \textbf{object} derived from a \textbf{class} is also called \textbf{instance}.
 	The variable\footnote{in this listing \emph{example}} is called the \textbf{reference}.
@@ -194,7 +205,7 @@ public class Student {
 	public class Student {
 		private String name;
 	
-	    public void changeName(String newName) {
+	    public void setName(String newName) {
 			name = newName;
 	    }
 	    
@@ -212,7 +223,7 @@ public class Student {
 	    
 	    public static void main(String[] args) {
 	        Student example = new Student(); // creation
-	        example.changeName("Jane"); // method call
+	        example.setName("Jane"); // method call
 	        example.printName(); // Prints "Jane"
 	    }
 	}
