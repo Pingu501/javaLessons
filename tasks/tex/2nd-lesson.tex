@@ -1,0 +1,36 @@
+\input{res/design.tex}
+% \usepackage{courier}
+\begin{document}
+\chapter*{Library - Part 1}
+
+\headingfont
+\parbox {\textwidth}{
+    \textbf{Difficulty}: Easy - 45 minutes \\
+    \textbf{Requirements}: Creating classes, initialising objects \\
+    \textbf{Learning outcome}: Working with simple classes
+}
+
+\normalfont
+\begin{center}
+\line(1,0){500}
+\end{center}
+\vspace{1cm}
+
+\section*{Description}
+Books can be borrowed from a small library. Each book has a title and an ISBN. The library can store one book multiple times. 
+As the library is small, it can only store 10 books.
+
+\section*{Tasks}
+\begin{enumerate}
+     \item Write the classes \textit{Library} and \textit{Book}.
+     \item Write a constructor for the class \textit{Book}, which takes title and ISBN as arguments.
+     \item Implement a \textit{main Method} in the class \textit{Library}, which tests the \textit{Book}'s methods.
+\end{enumerate}
+
+\section*{Hints}
+\begin{itemize}
+    \item An ISBN consists of 13 characters. Use \texttt{long} or \texttt{String} instead of \texttt{int}.
+    \item When assigning the number as \texttt{long}, an \texttt{L} is attached: \texttt{long var = 1234501234567890L}.
+\end{itemize}
+
+\end{document}
