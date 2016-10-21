@@ -68,6 +68,17 @@ public class IteExample {
 \end{lstlisting}
 \end{frame}
 
+\begin{frame}{Conditions?}
+How to compare things:
+\begin{itemize}
+    \item \texttt{==} Equal
+    \item \texttt{!=} Not Equal
+    \item \texttt{>} Greater Than
+    \item \texttt{>=} Greater or Equal than
+\end{itemize}
+\textit{Note}: You can concatenate multiple conditions\\ with \texttt{\&\&} (AND) or \texttt{||} (OR)
+\end{frame}
+
 \subsection{for}
 \begin{frame}[fragile]{for}
 \begin{lstlisting}
@@ -106,6 +117,7 @@ public class WhileExample {
 		int a = 0;
 		while(a <= 10) {
 			System.out.println(a);
+            a++; // Otherwise you would get an endless loop ∞
 		}
 	}
 }
