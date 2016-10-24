@@ -15,14 +15,34 @@
 \usepackage{fontspec}
 \usepackage{xltxtra}
 
+\usepackage{listings}
+
 % font declaration and title settings
 \newfontfamily\headingfont[]{Arial}
 \titleformat{\chapter}[display]
   {\huge\headingfont}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
-\titleformat*{\section}{\Large\headingfont\color{DarkRed}}
+\titleformat*{\section}{\Large\headingfont\color{Orange}}
 \titleformat*{\subsection}{\Large\headingfont}
 \renewcommand{\maketitlehooka}{\headingfont}
 
-\definecolor{DarkRed}{RGB}{236, 127, 55}
+\definecolor{Orange}{RGB}{236, 127, 55}
+\definecolor{StringColor}{RGB}{114, 0, 0}
+\definecolor{NumberColor}{RGB}{0, 70, 109}
+\definecolor{CommentColor}{RGB}{0, 70, 0}
+\definecolor{KeywordColor}{RGB}{191, 0, 64}
 
 \pagenumbering{Roman}
+
+\lstset{language=Java,
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{KeywordColor},
+    commentstyle=\color{CommentColor},
+    numberstyle=\tiny\color{NumberColor},
+    stringstyle=\color{StringColor},
+    tabsize=4,
+    showstringspaces=false,
+    breaklines=true,
+    keepspaces=true,
+    numbers=left,
+    escapechar=@
+}
