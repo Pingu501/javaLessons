@@ -1,0 +1,37 @@
+\input{../res/design.tex}
+\begin{document}
+\chapter*{Fahrzeuge}
+
+\headingfont
+\parbox {\textwidth}{
+    \textbf{Voraussetzungen}: Vererbung \\
+    \textbf{Zeithorizont}: 45 Minuten \\
+    \textbf{Lernziele}: Praktischer Umgang mit Vererbungen
+}
+
+\normalfont
+\begin{center}
+\line(1,0){500}
+\end{center}
+\vspace{1cm}
+
+\section*{Beschreibung}
+Es gibt mehrere Arten von Fahrzeugen. Autos und Motorräder sind Beispiele. Elektroautos sind spezielle Autos. \\
+Jedes Fahrzeug besitzt eine bestimmte Anzahl von Rädern und wird von einer Marke hergestellt.
+Ob Steuern für ein Fahrzeug gezahlt werden müssen, wird mit einem \texttt{boolean} festgelegt, welcher standartmäßig auf \texttt{true} gesetzt ist.
+Autos können einen Autopiloten besitzen. Bei Elektroautos wird die Kapazität der Batterie angegeben außerdem müssen keine Steuern gezahlt werden.
+
+\section*{Aufgaben}
+\begin{enumerate}
+     \item Modelliere die Klassen \textit{Vehicle}, \textit{Car}, \textit{ElectricCar} und \textit{Motorcycle}.
+     \item Füge den Klassen die oben beschriebenen Variablen sowie deren Getter Methoden hinzu.
+     \item Konstruktoren jedes Fahrzeugs nehmen die Marke (String) und das Elektroauto zusätzlich die Kapazität entgegen.
+     \item Die toString Methode sollte den Markenname und bei dem Elektroauto zusätzlich die Kapazität ausgeben.
+     \item Erstelle in einer extra Klasse mit einer main-Methode, die ein Auto, Elektroauto und ein Motorrad erstellt. \
+            Gib für jedes Fahrzeug den Namen, die Anzahl der Räder und die Steuerpflicht aus.
+\end{enumerate}
+
+\section*{Hinweise}
+\begin{itemize}
+    \item Die Anzahl der Räder sollte sich von außen nicht ändern lassen.
+\end{document}
