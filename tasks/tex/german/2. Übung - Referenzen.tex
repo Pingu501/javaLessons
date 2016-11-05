@@ -1,0 +1,46 @@
+\input{../res/design.tex}
+
+\begin{document}
+\chapter*{Referenzen}
+
+\headingfont
+\parbox {\textwidth}{
+    \textbf{Voraussetzungen}: Umgang mit Objekten \\
+    \textbf{Zeithorizont}: 20 Minuten \\
+    \textbf{Lernziele}: Objekt-Referenzen verstehen
+}
+
+\normalfont
+\begin{center}
+\line(1,0){500}
+\end{center}
+\vspace{1cm}
+
+\section*{Beschreibung}
+\begin{lstlisting}
+public class Reference {
+    
+    public static void main(String[] args) {
+        int var1 = 4;
+        int var2 = var1;
+        
+        var1 = 8;
+        System.out.println(var2);
+        
+        Number ref1 = new Number(4);
+        Number ref2 = ref1;
+        ref1.number = 8;
+        System.out.println(ref2.number);
+    }
+    
+}
+
+\end{lstlisting}
+
+\section*{Aufgaben}
+\begin{enumerate}
+     \item Schreibe die Klassen \textit{Number} die zu dem Quelltext oben passt.
+     \item Führe das Programm aus. Was beobachtest du? Was kannst du daraus folgern?
+\end{enumerate}
+
+\end{document}

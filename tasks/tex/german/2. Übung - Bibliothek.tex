@@ -1,0 +1,35 @@
+\input{../res/design.tex}
+% \usepackage{courier}
+\begin{document}
+\chapter*{Bibliothek - Teil 1}
+
+\headingfont
+\parbox {\textwidth}{
+    \textbf{Voraussetzungen}: Klassen schreiben, Objekte instanziieren \\
+    \textbf{Zeithorizont}: 45 Minuten \\
+    \textbf{Lernziele}: Modellierung einfacher Klassen
+}
+
+\normalfont
+\begin{center}
+\line(1,0){500}
+\end{center}
+\vspace{1cm}
+
+\section*{Beschreibung}
+In einer Dorfbibliothek können Bücher ausgeliehen werden. Jedes Buch hat einen Titel und eine ISBN. Die Bibliothek kann mehrere Exemplare von einem Buch vorhalten. Die kleine Dorfbibliothek hat nur Platz für 10 Bücher.
+
+\section*{Aufgaben}
+\begin{enumerate}
+     \item Modelliere die Klassen \textit{Library} und \textit{Book}.
+     \item Baue einen Konstruktor für die Klasse \textit{Book}, welcher Titel und ISBN entgegen nimmt.
+     \item Implementiere eine \textit{main Methode} in der Klasse \textit{Library}, welche die Methoden der Klasse \textit{Book} testet.
+\end{enumerate}
+
+\section*{Hinweise}
+\begin{itemize}
+    \item Eine ISBN hat 13 Stellen. Nutze \texttt{long} oder \texttt{String} anstatt \texttt{int}.
+    \item Bei der Zuweisung (assignment) von \texttt{long} wird ein \texttt{L} angehangen. \\ \texttt{long var = 1234501234567890L}.
+\end{itemize}
+
+\end{document}

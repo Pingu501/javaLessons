@@ -1,0 +1,35 @@
+\input{../res/design.tex}
+\begin{document}
+\chapter*{Bibliothek - Teil 2}
+
+\headingfont
+\parbox {\textwidth}{
+    \textbf{Voraussetzungen}: Kontrollstrukturen, Arrays, Bibliothek - Teil 1 \\
+    \textbf{Zeithorizont}: 30 Minuten \\
+    \textbf{Lernziele}: Praktischer Umgang mit Arrays
+}
+
+\normalfont
+\begin{center}
+\line(1,0){500}
+\end{center}
+\vspace{1cm}
+
+\section*{Beschreibung}
+In einer Bibliothek können Bücher ausgeliehen werden. Jedes Buch hat einen Titel, einen Autor und eine ISBN. Die Bibliothek kann mehrere Exemplare von einem Buch vorhalten. Die Bibliothek hat 10 Regal mit maximal je 100 Bücher.
+
+\section*{Aufgaben}
+\begin{enumerate}
+    \item Erweitere die Klasse \textit{Book} um ein Attribut \texttt{author}.
+    \item Schreibe einen neuen Konstruktor, welcher \texttt{title}, \texttt{ISBN} und \texttt{author} entgegen nimmt.
+    \item Instanziiere eine Bibliothek. Nutze \texttt{Arrays} für die Bücherregale.
+    \item Implementiere die Methode \texttt{listBooks()}, welche alle Bücher ausgibt, jedoch keine leeren Regalplätze.
+\end{enumerate}
+
+\section*{Hinweise}
+\begin{itemize}
+    \item Ein \texttt{Array} aus Objekten hat an den Positionen, an denen noch kein \texttt{Objekt} gespeichert ist, eine Referenz auf \texttt{null} statt auf ein \texttt{Objekt}.
+    \item Mit \texttt{if (sampleReference == null)} kannst du überprüfen ob die  \texttt{sampleReference} eine  \texttt{null}-Referenz ist.
+\end{itemize}
+
+\end{document}
