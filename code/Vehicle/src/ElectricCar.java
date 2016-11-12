@@ -7,7 +7,7 @@ public class ElectricCar extends Car {
     public ElectricCar(String brand, int batteryCapacity) {
         super(brand);
         this.setTaxNeeded(false);
-	this.batteryCapacity = batteryCapacity;
+	    this.batteryCapacity = batteryCapacity;
     }
 
     @Override

@@ -1,7 +1,7 @@
 /**
  * Created by Max on 05.11.2016.
  */
-public class Application {
+public class Garage {
 
     public static void main(String[] args) {
         Car audi = new Car("Audi");
