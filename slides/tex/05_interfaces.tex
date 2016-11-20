@@ -1,8 +1,8 @@
-\input{res/slide_header.tex}
+\input{../templates/course_definitions}
+\input{../templates/course_information}
 
 \title{Java}
 \subtitle{Interface}
-\author{FSR Informatik}
 \date{\today}
 
 \begin{document}
@@ -10,11 +10,12 @@
 \begin{frame}
 \titlepage
 \end{frame}
+
 \begin{frame}{Overview}
 \tableofcontents
 \end{frame}
 
-\section{Additional Control Structures}
+\section{Additional Control Structure}
 \subsection{Switch}
 \begin{frame}[fragile]{Differentiate}
 	\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
@@ -58,20 +59,20 @@
 	\end{lstlisting}
 \end{frame}
 \begin{frame}[fragile]{Differentiate with Switch}
-	Depending on a \textcolor{red}{variable} you can switch the execution paths using the keyword \textbf{switch}.
+	Depending on a variable you can switch the execution paths using the keyword \textbf{switch}.
 	This works with \texttt{int}, \texttt{char} and \texttt{String}. \\
 	\vfill
-	The \textcolor{red}{variable} is compared 
-	with the \textcolor{orange}{value} following the keyword \textbf{case}.
+	The variable is compared 
+	with the value following the keyword case.
 	% Strings are not compared - dot.equal
-	If they are equal the program will enter the corresponding \textbf{case} \textcolor{gray}{block}.
-	If nothing fits the program will enter the \textbf{default} block.
+	If they are equal the program will enter the corresponding case block.
+	If nothing fits the program will enter the default block.
 	\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
 	public static void main (String[] args) {
-	    switch(@\textcolor{red}{intVariable}@) {
-	        case @\textcolor{orange}{1}@:
-	            @\textcolor{gray}{doSomething();}@
-	            @\textcolor{gray}{break;}@
+	    switch(intVariable) {
+	        case 1:
+	            doSomething();
+	            break;
 	        default:
 	            doOtherThings();
 	            break;
@@ -100,7 +101,8 @@
 	\end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Break - additional Information}
+\subsection{Break \& Continue}
+\begin{frame}[fragile]{Break}
 	The keyword \textbf{break} also stops the execution of loops.
 	\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
 	public static void main (String[] args) {
@@ -113,225 +115,23 @@
 	    }
 	}
 	\end{lstlisting}
-	For more information visit:\\
-	\scriptsize\url{http://docs.oracle.com/javase/tutorial/java/nutsandbolts/branch.html}
 \end{frame}
 
-%\subsection{Enum}
-%\begin{frame}{}
-%\end{frame}
-
-\section{Visibility}
-\subsection{Public and Private}
-\begin{frame}{Public and Private}
-	Until now we used \textbf{public} as standard visibility for methods and attributes. 
-	The alternative is \textbf{private}.
-	\vfill	
-	A public attribute is accessable from all classes.
-	\vfill
-	A private attribute is only accessable from the own class.
-	\vfill
-	Visibility dictates Accessibility.
-\end{frame}
-
-\begin{frame}[fragile]{Example - public}
-	\begin{lstlisting}
-	public class Test {
-	
-	    public int number;
-	}
-	\end{lstlisting}
-	\begin{lstlisting}
+\begin{frame}[fragile]{Continue}
+	The keyword \textbf{continue} jumps to the next loop step.
+	\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
 	public static void main (String[] args) {
 	
-	    Test test = new Test();
-	    test.number = 16; // write
-	    System.out.println(test.number); // read
-	}
-	\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Example - private}
-	\begin{lstlisting}
-	public class Test {
-	
-	    private int number;
-	}
-	\end{lstlisting}
-	\begin{lstlisting}
-	public static void main (String[] args) {
-	
-	    Test test = new Test();
-	    // access to test.number is impossible
-	}
-	\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Example - private}
-	A public/private method has access to a private attribute of the same class.
-	\begin{lstlisting}
-	public class Test {
-	
-	    private int number;
-	    
-	    public void changeNumber() {
-	        this.number = 3; 
-	        // access is possible
-	    }
-	}
-	\end{lstlisting}
-\end{frame}
-
-\subsection{Getter und Setter}
-\begin{frame}[fragile]{Access Attributes through Methods}
-	Methods like \texttt{getAttributeX()} are called \textbf{getter}.
-	\begin{lstlisting}
-	public class Test {
-	
-	    private int number;
-	    
-	    public int getNumber() {
-	        return this.number;
-	    }
-	}
-	\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Modify Attributes through Methods}
-	Methods like \texttt{setAttributeX(value)} are called \textbf{setter}.
-	\begin{lstlisting}
-	public class Test {
-	
-	    private int number;
-	    
-	    public void setNumber(int number) {
-	        this.number = number;
-	    }
-	}
-	\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Modify Attributes through Methods}
-	A setter can check inputs and depending on the result modify attributes.
-	\begin{lstlisting}
-	public class Test {
-	
-	    // number is always greater than zero
-	    private int number;
-	    
-	    public void setNumber(int number) {
-	    	    if (number > 0) {
-	            this.number = number;
+	    for (int i = 1; 1 < 10; i++) {
+	        if (i == 3) {
+	            continue;
 	        }
+	        System.out.println("i = " + i);
 	    }
 	}
 	\end{lstlisting}
 \end{frame}
 
-\subsection{Package}
-\begin{frame}{Package}
-	Packages help to organize large software with many classes.
-	\vfill
-	Every \textbf{package} comes with a corresponding \textbf{namespace}. 
-	The package \emph{myPackage} creates the namespace \emph{myPackage}.
-	%If you create a new folder \emph{myFolder} in your package \emph{myPackage}
-	%you get a new namespace \texttt{myPackage.myFolder}.
-	\vfill
-	Inside a namespace you can not use the same name for two classes.
-	But there can be a class \emph{Test} in namespace {myPackage} and 
-	a class \emph{Test} in the namespace \emph{myOtherPackage}.
-\end{frame}
-\begin{frame}[fragile]{Eclipse - Creating a Package}
-	\begin{enumerate}
-		\item Right click at your project in the Package Explorer \hfill \\
-			\menu[,]{New, Package}
-		\item Name your package
-		\item Press the \keys{Finish} button
-	\end{enumerate}
-\end{frame}
-\begin{frame}[fragile]{Example 1}
-	The package declaration is above the class declaration.
-	\begin{lstlisting}
-	package hello;	
-	
-	public class Number {
-	
-	    public int n1;
-	    
-	    public void setN1(int n1) {
-	            this.n1 = n1;
-	    }
-	}
-	\end{lstlisting}
-\end{frame}
-\begin{frame}[fragile]{Example 1 - Import}
-	The class \emph{Number} from the package \emph{hello} will be imported.
-	\begin{lstlisting}
-	package notHello;
-	
-	import hello.Number;	
-	
-	public class Test {
-
-	    public static void main (String[] args) {
-	
-	        Number number = new Number();
-	        number.n1 = 16;
-	    }
-	}
-	\end{lstlisting}
-\end{frame}
-\begin{frame}[fragile]{Protected}
-	The attribute \emph{n1} has now the visibility \textbf{protected}. 
-	This means \emph{n1} it is visible for everyone in the same namespace \emph{hello}.
-	\begin{lstlisting}
-	package hello;	
-	
-	public class Number {
-	
-	    protected int n1;
-	    
-	    public void setN1(int n1) {
-	            this.n1 = n1;
-	    }
-	}
-	\end{lstlisting}
-\end{frame}
-\begin{frame}[fragile]{Example 2}
-	\emph{Number.n1} is protected, hence not visible for the class \emph{Test}.
-	The access to \emph{n1} is possible through the public setter.
-	\begin{lstlisting}
-	package notHello;
-	
-	import hello.Number;	
-	
-	public class Test {
-
-	    public static void main (String[] args) {
-	
-	        Number number = new Number();
-	        number.setN1(16);
-	    }
-	}
-	\end{lstlisting}
-\end{frame}
-
-%\subsection{Summary}
-%\begin{frame}{Summary}
-%	Method visibility works similar to Attribute visibility.
-%	\begin{description}
-%		\item[public]
-%		\item[protected]
-%		\item[private]
-%	\end{description}
-%	%TODO Why use visibility mechanisms
-%\end{frame}
-
-%\begin{frame}{Hiding}
-%	
-%\end{frame}
-
-%TODO improve the whole section
 \section{Static}
 \subsection{Overview}
 %TODO improve this overview - add an example - think about the headline
