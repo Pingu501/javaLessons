@@ -1,0 +1,37 @@
+\input{../res/design.tex}
+\begin{document}
+\chapter*{Zweidimensional}
+
+\headingfont
+\parbox {\textwidth}{
+    \textbf{Voraussetzungen}: Umgang mit Interfaces \\
+    \textbf{Zeithorizont}: 30 Minuten \\
+    \textbf{Lernziele}: Implementierung von Interfaces
+}
+
+\normalfont
+\begin{center}
+\line(1,0){500}
+\end{center}
+\vspace{1cm}
+
+\section*{Beschreibung}
+\begin{lstlisting}
+	public interface TwoDimensional {
+    
+        public double pi =  3.14159f;
+        
+        public double getPerimeter();
+        
+        public double getArea();
+        
+	}
+\end{lstlisting}
+
+\section*{Aufgaben}
+\begin{enumerate}
+    \item Implementiere für die Klassen \textit{Square}, \textit{Circle} und \textit{Rectangle} das Interface \textit{TwoDimensional}.
+    \item Schreibe Konstruktoren die geeignete Parameter, wie z.B. Radius, der Körper übernehmen.
+    \item Nutze die Konstante \textit{pi} wo nötig.
+\end{enumerate}
+\end{document}
