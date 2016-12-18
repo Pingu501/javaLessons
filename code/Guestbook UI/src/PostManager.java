@@ -103,34 +103,30 @@ public class PostManager {
 
 	public JPanel getPostPanel() {
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridBagLayout());
+		panel.setLayout(new GridLayout(0,1));
 
-		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = GridBagConstraints.FIRST_LINE_START;
-
+		JPanel titlePanel = new JPanel();
+		titlePanel.setMaximumSize(new Dimension(1000, 30));
+		titlePanel.setLayout(new GridLayout(1, 1));
 		titleLabel = new JLabel("");
-		panel.add(titleLabel, c);
+		titlePanel.add(titleLabel);
+		panel.add(titlePanel);
 
-		c = new GridBagConstraints();
-		c.anchor = GridBagConstraints.LINE_START;
-		c.gridwidth = 3;
-		c.gridheight = 1;
+		JPanel postsPanel = new JPanel();
+		postsPanel.setLayout(new GridLayout(1, 1));
 
 		postList = new JList();
-		panel.add(postList, c);
+		postsPanel.add(postList);
+		panel.add(postsPanel);
 
-		c = new GridBagConstraints();
-		c.anchor = GridBagConstraints.LAST_LINE_START;
-		c.gridwidth = 2;
+		JPanel textPanel = new JPanel();
+		textPanel.setMaximumSize(new Dimension(1000, 30));
+		textPanel.setLayout(new GridLayout(1, 2));
 
 		textField = new JTextField();
-		panel.add(textField, c);
+		textPanel.add(textField);
 
 		JButton postButton = new JButton("Post");
-
-		c = new GridBagConstraints();
-		c.anchor = GridBagConstraints.LAST_LINE_END;
-		c.gridwidth = 1;
 
 		postButton.addActionListener(new ActionListener() {
 			@Override
@@ -139,32 +135,8 @@ public class PostManager {
 			}
 		});
 
-		panel.add(postButton, c);
-
-		return panel;
-	}
-
-	public JPanel newPanel() {
-		JPanel panel = new JPanel();
-
-		JLabel postLabel = new JLabel("Posts:");
-		panel.add(postLabel);
-
-		JPanel scrollPanel = new JPanel();
-
-		JScrollPane scrollPane = new JScrollPane (scrollPanel,
-				ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
-		// JScrollPane wird dem Dialog hinzugefügt
-		panel.add(scrollPane);
-
-		JList posts = new JList();
-		posts.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		scrollPanel
-				.add(posts);
-
-		posts.setListData(new String[]{"Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?", "Ich bin neu hier", "Hört mich jemand?"});
+		textPanel.add(postButton);
+		panel.add(textPanel);
 
 		return panel;
 	}

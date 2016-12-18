@@ -66,6 +66,8 @@ public class UserManager {
 	public JPanel getUserPanel() {
 		JPanel panel = new JPanel();
 
+		panel.setLayout(new GridLayout(1, 1));
+
 		this.userList = new JList();
 		this.userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -77,6 +79,8 @@ public class UserManager {
 				PostManager.getInstance().viewPostsByUser();
 			}
 		});
+
+		panel.setMinimumSize(new Dimension(150, 50));
 
 		return panel;
 	}

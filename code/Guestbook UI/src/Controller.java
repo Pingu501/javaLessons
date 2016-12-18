@@ -43,11 +43,12 @@ public class Controller {
 		splitPane.setLeftComponent(userManager.getUserPanel());
 		splitPane.setRightComponent(postManager.getPostPanel());
 
+		splitPane.setDividerLocation(0.3);
+
 		window.setMenuBar(bar);
 		window.add(splitPane);
 
 		// Set the window to be visible
-		window.pack();
 		window.setVisible(true);
 	}
 
