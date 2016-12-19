@@ -1,0 +1,34 @@
+\input{../templates/course_definitions}
+\input{../templates/course_information}
+
+\title{Java}
+\subtitle{Scopes & GUI}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Overview}
+\tableofcontents
+\end{frame}
+
+\section{Generics}
+\subsection{What is a generic}
+\begin{frame}[fragile]{Generics}
+	\begin{lstlisting}
+		Object myStringAsObject = "klaus";
+		String myStringAsString = (String) o;
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Generics}
+	\begin{lstlisting}
+		Object myStringAsObject = Integer.valueOf("42");
+		String myStringAsString = (String) myStringAsObject;
+	\end{lstlisting}
+\end{frame}
+
+\end{document}
