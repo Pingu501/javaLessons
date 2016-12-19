@@ -92,9 +92,10 @@ public class PostManager {
 		posts.forEach((k,v) -> {
 			if(v.getUserId() == userID) {
 				postsByUser.add(v.getText());
-				postList.setListData(postsByUser.toArray());
 			}
 		});
+
+		postList.setListData(postsByUser.toArray());
 	}
 
 	private JLabel titleLabel;

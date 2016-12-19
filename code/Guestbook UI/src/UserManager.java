@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -19,12 +21,12 @@ public class UserManager {
 	private static UserManager userManager = new UserManager();
 
 	private JList userList;
+	private JComboBox userBox;
+	private JTabbedPane tabbedPane;
 
 	private UserManager() {
 
 	}
-
-	private JTabbedPane tabbedPane;
 
 	public static UserManager getInstance() {
 		return userManager;
@@ -50,7 +52,11 @@ public class UserManager {
 		System.out.println("Added new user " + userName);
 		currentId++;
 
-		userList.setListData(users.values().toArray());
+		if (userList != null) {
+			userList.setListData(users.values().toArray());
+		} else if (userBox != null) {
+			userBox.addItem(userName);
+		}
 	}
 
 	public User getUserById(Integer id) {
@@ -85,7 +91,26 @@ public class UserManager {
 		return panel;
 	}
 
+	public JComboBox getUserBox() {
+		this.userBox = new JComboBox();
+
+		this.userBox.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PostManager.getInstance().viewPostsByUser();
+			}
+		});
+
+		return this.userBox;
+	}
+
 	public int getSelectedUserID() {
-		return userList.getSelectedIndex();
+		if (userList != null) {
+			return userList.getSelectedIndex();
+		} else if (userBox != null) {
+			return userBox.getSelectedIndex();
+		}
+
+		return 0;
 	}
 }

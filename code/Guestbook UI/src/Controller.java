@@ -1,3 +1,5 @@
+import javafx.scene.control.Separator;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,13 +18,6 @@ public class Controller {
 		this.userManager = UserManager.getInstance();
 		this.postManager = PostManager.getInstance();
 
-		// Create a new window
-		JFrame window = new JFrame();
-
-		// Set its title and size
-		window.setTitle("Guestbook");
-		window.setSize(500, 500);
-
 		// Create menu bar and items..
 		MenuBar bar = new MenuBar();
 		Menu menu = new Menu("File");
@@ -36,7 +31,19 @@ public class Controller {
 		});
 
 		menu.add(item);
+
 		bar.add(menu);
+
+		createWindow2(bar);
+	}
+
+	public void createWindow1(MenuBar menuBar) {
+		// Create a new window
+		JFrame window = new JFrame();
+
+		// Set its title and size
+		window.setTitle("Guestbook");
+		window.setSize(500, 500);
 
 		JSplitPane splitPane = new JSplitPane();
 
@@ -45,49 +52,33 @@ public class Controller {
 
 		splitPane.setDividerLocation(0.3);
 
-		window.setMenuBar(bar);
+		window.setMenuBar(menuBar);
 		window.add(splitPane);
 
 		// Set the window to be visible
 		window.setVisible(true);
 	}
 
-	public void pathsController() {
+	public void createWindow2(MenuBar menuBar) {
+		// Create a new window
+		JFrame window = new JFrame();
 
-		boolean running = true;
+		// Set its title and size
+		window.setTitle("Guestbook");
+		window.setSize(500, 500);
 
-		while (running) {
-			System.out.print("\n############################## \n");
+		JPanel cardPanel = new JPanel();
 
-			System.out.println("[1] \t create User");
-			System.out.println("[2] \t add post");
-			System.out.println("[3] \t view all posts");
-			System.out.println("[4] \t view posts by user");
-			System.out.println("[9] \t to exit");
+		cardPanel.setLayout(new GridLayout(2,1));
 
-			Scanner scanner = new Scanner(System.in);
-			Integer route = scanner.nextInt();
+		cardPanel.add(userManager.getUserBox());
+		cardPanel.add(postManager.getPostPanel());
 
-			switch (route) {
-				case 1:
-					userManager.addUser();
-					break;
-				case 2:
-					postManager.addPost();
-					break;
-				case 3:
-					postManager.viewAllPosts();
-					break;
-				case 4:
-					postManager.viewPostsByUser();
-					break;
-				case 9:
-					running = false;
-					break;
-				default:
-					System.out.println("Unsupported input");
-			}
-		}
+		window.setMenuBar(menuBar);
+		window.add(cardPanel);
+
+		// Set the window to be visible
+		window.setVisible(true);
 	}
 
 }
