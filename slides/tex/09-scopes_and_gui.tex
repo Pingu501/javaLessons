@@ -15,6 +15,98 @@
 \tableofcontents
 \end{frame}
 
+\section{Scopes}
+\subsection{Classes}
+
+\begin{frame}[fragile]{Visiabilities}
+	\begin{lstlisting}
+	class MyGreatClass {
+	
+		//Attributes are public by default
+		Car myCar; 
+	
+		//Public are available in every part of our code.
+		public 
+		
+		//Private Attributes can only be acced via a method
+		private House myHouse;
+	}
+		
+	\end{lstlisting}
+\end{frame}
+
+\subsection{Controll Structures}
+\begin{frame}[fragile]{If}
+	\begin{lstlisting}
+	...
+	int a = 1;
+	if(...) {
+		int b = 5;
+		System.out.println(a);
+		System.out.println(b);
+	}
+	
+	System.out.println(a);
+	System.out.println(b);
+	...
+	\end{lstlisting}
+	
+	b is only available in the scope of the if.
+	
+	b is not outside of the if available.
+	
+	\color{red} WILL NOT COMPILE
+\end{frame}
+
+\begin{frame}[fragile]{For}
+	\begin{lstlisting}
+	for(int i = 0; i <= 100; i++) {
+		int b = 3;
+		System.out.println(i);
+		System.out.println(b);
+	}
+	\end{lstlisting}
+	
+	b will be redefined in every round of the loop and is only available in the for loop.
+	
+	The scope is created at the begining and destroyed at the end of each round.
+\end{frame}
+
+\begin{frame}[fragile]{While}
+	\begin{lstlisting}
+	int i = 0;
+	while(i <= 100) {
+		int b = 3;
+		System.out.println(i);
+		System.out.println(b);
+	}
+	\end{lstlisting}
+	
+	For and while got the same scope behavior.
+\end{frame}
+  
+\subsection{Mulit definitions}
+\begin{frame}[fragile]{Examples}
+	\begin{lstlisting}
+	public class myClass {
+		private int a;
+	
+		public myClass(int a) {
+			this.a = a;
+		}
+	}
+	\end{lstlisting}
+
+	Use nearest definition.
+
+	In one scope every variable name can be defined only one time.
+\end{frame}
+
+\begin{frame}{What we learned}
+	Scopes are definition areas for variables.
+	Every Block defines a new Scope.
+\end{frame}
+    
 \section{GUI}
 \subsection{Window}
 \begin{frame}[fragile]{Window}
@@ -78,9 +170,9 @@
 				userManager.addUser();
 			}
 		});
-	\end{lstlisting}
+  \end{lstlisting}
 \end{frame}
-
+    
 \begin{frame}[fragile]{Actions}
   Another example for a list
 	\begin{lstlisting}
@@ -95,7 +187,6 @@
 				int selectedIndex = this.userList.getSelectedIndex();
 			}
 		});
-	\end{lstlisting}
+    \end{lstlisting}
 \end{frame}
-
 \end{document}

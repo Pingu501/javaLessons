@@ -117,7 +117,12 @@ public class PostManager {
 		postsPanel.setLayout(new GridLayout(1, 1));
 
 		postList = new JList();
-		postsPanel.add(postList);
+
+		JScrollPane scrollPane = new JScrollPane (postList,
+				ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+		postsPanel.add(scrollPane);
 		panel.add(postsPanel);
 
 		JPanel textPanel = new JPanel();

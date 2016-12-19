@@ -77,7 +77,11 @@ public class UserManager {
 		this.userList = new JList();
 		this.userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-		panel.add(userList);
+		JScrollPane scrollPane = new JScrollPane (userList,
+				ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+		panel.add(scrollPane);
 
 		userList.addListSelectionListener(new ListSelectionListener() {
 			@Override

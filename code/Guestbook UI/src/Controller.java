@@ -34,7 +34,7 @@ public class Controller {
 
 		bar.add(menu);
 
-		createWindow2(bar);
+		createWindow1(bar);
 	}
 
 	public void createWindow1(MenuBar menuBar) {
