@@ -2,7 +2,7 @@
 \input{../templates/course_information}
 
 \title{Java}
-\subtitle{Scopes & GUI}
+\subtitle{Scopes \& GUI}
 \date{\today}
 
 \begin{document}
@@ -15,19 +15,86 @@
 \tableofcontents
 \end{frame}
 
-\section{Generics}
-\subsection{What is a generic}
-\begin{frame}[fragile]{Generics}
+\section{GUI}
+\subsection{Window}
+\begin{frame}[fragile]{Window}
+  Windows are created by creating a \texttt{JFrame} object.
 	\begin{lstlisting}
-		Object myStringAsObject = "klaus";
-		String myStringAsString = (String) o;
+		// Create a new window
+		JFrame window = new JFrame();
+
+		// Set its title and size
+		window.setTitle("Guestbook");
+		window.setSize(500, 500);
+    
+    // Show the window
+    window.setVisible(true);
 	\end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Generics}
+\begin{frame}[fragile]{Window}
+  You can add panels and other elements to the window.
 	\begin{lstlisting}
-		Object myStringAsObject = Integer.valueOf("42");
-		String myStringAsString = (String) myStringAsObject;
+		// Add a blue background panel
+		JPanel backgroundPanel = new JPanel();
+		backgroundPanel.setBackground(Color.BLUE);
+		window.add(backgroundPanel);
+	\end{lstlisting}
+
+  More advanced panels are available (JSplitPane, JScrollPane, JTabbedPane etc..)
+\end{frame}
+
+\subsection{Menus}
+\begin{frame}[fragile]{Menus}
+  \texttt{Menus} are used to display multiple possible actions to the user.
+	\begin{lstlisting}
+		// Menu Bar holds all menus
+    MenuBar bar = new MenuBar();
+    
+    // Create new menu which holds menu items and submenus
+		Menu menu = new Menu("File");
+
+    // Create new menu item 
+		MenuItem item = new MenuItem("Create new User");
+    
+    // Combine everything
+		menu.add(item);
+		bar.add(menu);
+		window.setMenuBar(bar);
+	\end{lstlisting}
+\end{frame}
+
+\subsection{Actions}
+\begin{frame}[fragile]{Actions}
+  In order to respond to button presses or other changes in the UI, you need to add listeners
+	\begin{lstlisting}
+    // Create menu item
+		MenuItem item = new MenuItem("Create new User");
+  
+    // Add listener
+		item.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				userManager.addUser();
+			}
+		});
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Actions}
+  Another example for a list
+	\begin{lstlisting}
+    // Create list with single selection option.
+		this.userList = new JList();
+		this.userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+      
+    // Add listener
+		this.userList.addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				int selectedIndex = this.userList.getSelectedIndex();
+			}
+		});
 	\end{lstlisting}
 \end{frame}
 
