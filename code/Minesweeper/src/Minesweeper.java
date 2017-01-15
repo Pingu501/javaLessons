@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class Minesweeper {
 
-	private static List<Field> fields = new ArrayList<>();
+	private List<Field> fields = new ArrayList<>();
 
 	public void initGame() {
 		int width = 10;
@@ -36,9 +36,11 @@ public class Minesweeper {
 			int randomPositionY = random.nextInt(height);
 
 			Field field = getFieldByCoordinates(randomPositionX, randomPositionY);
-			if(field.getType() == Field.Type.EMPTY) {
-				field.setType(Field.Type.BOMB);
-				bombsToBePlaced--;
+			if(field != null) {
+				if (field.getType() == Field.Type.EMPTY) {
+					field.setType(Field.Type.BOMB);
+					bombsToBePlaced--;
+				}
 			}
 		}
 	}
