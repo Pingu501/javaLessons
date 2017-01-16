@@ -106,15 +106,12 @@ public class WindowController {
             case COVERED: break;
             case FLAGGED:
                 button.setText("F");
-                button.setBackground(Color.GRAY);
                 break;
             case OPENED:
                 button.setText("•");
-                button.setBackground(Color.GRAY);
                 break;
             case REVEALD:
                 button.setText(String.valueOf(field.getNumber()));
-                button.setBackground(Color.GRAY);
                 break;
         }
 
