@@ -59,19 +59,15 @@ public class Minesweeper {
 	public void clickField(int xPosition, int yPosition, boolean isRightClick) {
 		Field field = getFieldByCoordinates(xPosition, yPosition);
 
-		System.out.println(field);
-		System.out.println(isRightClick);
 		if(isRightClick) {
 			field.setStatus(Field.Status.FLAGGED);
 		} else {
 			if(field.getType() != Field.Type.BOMB) {
-				int number = calculateNumber(field);
+				calculateNumber(field);
+				field.setStatus(Field.Status.OPENED);
 
-				if (number != 0) {
-					field.setStatus(Field.Status.REVEALD);
-					field.setNumber(number);
-				} else {
-					field.setStatus(Field.Status.OPENED);
+				if(field.getNumber() == 0) {
+					revealNeighbors(field);
 				}
 			}
 		}
@@ -79,7 +75,8 @@ public class Minesweeper {
 		windowController.updateField(field);
 	}
 
-	private int calculateNumber(Field field) {
+
+	private void calculateNumber(Field field) {
 		List<Field> fields = getAllNeighbors(field);
 		int number = 0;
 
@@ -93,7 +90,7 @@ public class Minesweeper {
 			}
 		}
 
-		return number;
+		field.setNumber(number);
 	}
 
 	private List<Field> getAllNeighbors(Field field) {
@@ -114,5 +111,26 @@ public class Minesweeper {
 		fields.add(getFieldByCoordinates(field.getPositionX() + 1, field.getPositionY() + 1));
 
 		return fields;
+	}
+
+	private void revealNeighbors(Field field) {
+		List<Field> fields = getAllNeighbors(field);
+
+		for(Field neighborField : fields) {
+			if(neighborField == null) {
+				continue;
+			}
+
+			if(neighborField.getStatus() == Field.Status.OPENED) {
+				continue;
+			}
+
+			calculateNumber(neighborField);
+			if(neighborField.getNumber() == 0) {
+				neighborField.setStatus(Field.Status.OPENED);
+				windowController.updateField(neighborField);
+				revealNeighbors(neighborField);
+			}
+		}
 	}
 }

@@ -113,9 +113,6 @@ public class WindowController {
                 button.setEnabled(false);
                 break;
             case OPENED:
-                button.setText("•");
-                break;
-            case REVEALD:
                 button.setText(String.valueOf(field.getNumber()));
                 break;
         }

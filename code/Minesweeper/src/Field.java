@@ -10,7 +10,6 @@ public class Field {
 
 	public enum Status {
 		COVERED,
-		REVEALD,
 		FLAGGED,
 		OPENED
 	}
