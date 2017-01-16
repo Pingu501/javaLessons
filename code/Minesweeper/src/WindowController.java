@@ -69,7 +69,7 @@ public class WindowController {
                         mineButton.getModel().setPressed(false);
 
                         if (pressed) {
-                            minesweeper.clickField(ii, jj);
+                            minesweeper.clickField(ii, jj, false);
                         }
                         pressed = false;
 
