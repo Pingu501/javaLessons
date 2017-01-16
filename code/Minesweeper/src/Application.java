@@ -3,9 +3,15 @@
  */
 public class Application {
 
+	private static Minesweeper game;
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Minesweeper for Java!");
-		Minesweeper game = new Minesweeper();
+		game = new Minesweeper();
 		game.initGame();
+	}
+
+	public static void fieldClicked(int xPosition, int yPosition) {
+		game.clickField(xPosition, yPosition);
 	}
 }
