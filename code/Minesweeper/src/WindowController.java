@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.*;
 import java.util.List;
 
@@ -12,7 +14,6 @@ import java.util.List;
  */
 public class WindowController {
 
-    private JLabel scoreLabel;
     private JButton[][] fields;
 
     public WindowController(int x, int y) {
@@ -30,15 +31,9 @@ public class WindowController {
         contentPanel.setBorder(BorderFactory.createEmptyBorder(borderMargin, borderMargin, borderMargin, borderMargin));
         window.add(contentPanel);
 
-        scoreLabel = new JLabel("Your score: 0");
-        scoreLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        contentPanel.add(scoreLabel);
-
         // Calculate window size
-
-        Dimension labelSize = scoreLabel.getPreferredSize();
         int width = buttonSize * x + (2 * borderMargin);
-        int height = buttonSize * y + (2 * borderMargin) + labelSize.height;
+        int height = buttonSize * y + (2 * borderMargin);
 
         JPanel minefield = new JPanel();
         minefield.setBorder(BorderFactory.createLineBorder(Color.black, 2));
@@ -53,6 +48,46 @@ public class WindowController {
 
                 int ii = i;
                 int jj = j;
+
+                mineButton.addMouseListener(new MouseAdapter(){
+                    boolean pressed;
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        mineButton.getModel().setArmed(true);
+                        mineButton.getModel().setPressed(true);
+                        pressed = true;
+                    }
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                        //if(isRightButtonPressed) {underlyingButton.getModel().setPressed(true));
+                        mineButton.getModel().setArmed(false);
+                        mineButton.getModel().setPressed(false);
+
+                        if (pressed) {
+                            if (SwingUtilities.isRightMouseButton(e)) {
+                                mineButton.setText("F");
+                            }
+                            else {
+                                mineButton.setText("X");
+                            }
+                        }
+                        pressed = false;
+
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        pressed = false;
+                    }
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        pressed = true;
+                    }
+                });
+
                 mineButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -71,10 +106,6 @@ public class WindowController {
         contentPanel.setMaximumSize(new Dimension(width, height));
 
         window.setVisible(true);
-    }
-
-    public void updateScore(int score) {
-        this.scoreLabel.setText("Your score: " + score);
     }
 
     public void updateField(Field field) {
