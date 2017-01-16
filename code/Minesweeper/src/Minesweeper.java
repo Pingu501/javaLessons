@@ -8,19 +8,20 @@ import java.util.Random;
 public class Minesweeper {
 
 	private List<Field> fields = new ArrayList<>();
+	private WindowController windowController;
 
 	public void initGame() {
 		int width = 10;
 		int height = 10;
 
-		WindowController windowController = new WindowController(width, height);
+		windowController = new WindowController(width, height);
 		generateFields(width, height);
 		placeBombs(width, height);
 	}
 
 	private void generateFields(int width, int height) {
-		for(int i = 1; i <= width; i++) {
-			for(int j = 1; j <= height; j++) {
+		for(int i = 0; i < width; i++) {
+			for(int j = 0; j < height; j++) {
 				fields.add(new Field(i, j));
 			}
 		}
@@ -29,7 +30,6 @@ public class Minesweeper {
 	private void placeBombs(int width, int height) {
 		Random random = new Random();
 
-		int numberFields = width * height;
 		int bombsToBePlaced = 10;
 
 		while (bombsToBePlaced > 0) {
@@ -54,5 +54,9 @@ public class Minesweeper {
 		}
 
 		return null;
+	}
+
+	public void clickField(int xPosition, int yPosition) {
+		windowController.updateField(getFieldByCoordinates(xPosition, yPosition));
 	}
 }

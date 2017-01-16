@@ -91,7 +91,7 @@ public class WindowController {
                 mineButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("CLICKED  " + ii + jj);
+                        Application.fieldClicked(ii, jj);
                     }
                 });
 
