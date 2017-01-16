@@ -29,7 +29,6 @@ public class Minesweeper {
 	private void placeBombs(int width, int height) {
 		Random random = new Random();
 
-		int numberFields = width * height;
 		int bombsToBePlaced = 10;
 
 		while (bombsToBePlaced > 0) {
