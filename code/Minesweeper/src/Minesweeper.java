@@ -58,11 +58,21 @@ public class Minesweeper {
 
 	public void clickField(int xPosition, int yPosition, boolean isRightClick) {
 		Field field = getFieldByCoordinates(xPosition, yPosition);
+
+		System.out.println(field);
+		System.out.println(isRightClick);
 		if(isRightClick) {
 			field.setStatus(Field.Status.FLAGGED);
 		} else {
 			if(field.getType() != Field.Type.BOMB) {
-				field.setNumber(calculateNumber(field));
+				int number = calculateNumber(field);
+
+				if (number != 0) {
+					field.setStatus(Field.Status.REVEALD);
+					field.setNumber(number);
+				} else {
+					field.setStatus(Field.Status.OPENED);
+				}
 			}
 		}
 
