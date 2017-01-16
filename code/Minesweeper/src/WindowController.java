@@ -14,9 +14,12 @@ import java.util.List;
  */
 public class WindowController {
 
+    private Minesweeper minesweeper;
     private JButton[][] fields;
 
-    public WindowController(int x, int y) {
+    public WindowController(int x, int y, Minesweeper minesweeper) {
+        this.minesweeper = minesweeper;
+
         int borderMargin = 20;
         int buttonSize = 30;
 
@@ -66,12 +69,7 @@ public class WindowController {
                         mineButton.getModel().setPressed(false);
 
                         if (pressed) {
-                            if (SwingUtilities.isRightMouseButton(e)) {
-                                mineButton.setText("F");
-                            }
-                            else {
-                                mineButton.setText("X");
-                            }
+                            minesweeper.clickField(ii, jj);
                         }
                         pressed = false;
 
@@ -85,13 +83,6 @@ public class WindowController {
                     @Override
                     public void mouseEntered(MouseEvent e) {
                         pressed = true;
-                    }
-                });
-
-                mineButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        Application.fieldClicked(ii, jj);
                     }
                 });
 
@@ -121,6 +112,7 @@ public class WindowController {
                 button.setBackground(Color.GRAY);
                 break;
             case REVEALD:
+
                 break;
         }
     }

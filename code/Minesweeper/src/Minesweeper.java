@@ -14,7 +14,7 @@ public class Minesweeper {
 		int width = 10;
 		int height = 10;
 
-		windowController = new WindowController(width, height);
+		windowController = new WindowController(width, height, this);
 		generateFields(width, height);
 		placeBombs(width, height);
 	}
