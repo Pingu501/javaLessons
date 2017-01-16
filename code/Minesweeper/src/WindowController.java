@@ -102,10 +102,15 @@ public class WindowController {
     public void updateField(Field field) {
         JButton button = fields[field.getPositionX()][field.getPositionY()];
 
+        if (!button.isEnabled()) {
+            return;
+        }
+
         switch (field.getStatus()) {
             case COVERED: break;
             case FLAGGED:
                 button.setText("F");
+                button.setEnabled(false);
                 break;
             case OPENED:
                 button.setText("•");
