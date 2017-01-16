@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by Max on 15.01.17.
@@ -11,10 +13,13 @@ import java.awt.event.ActionListener;
 public class WindowController {
 
     private JLabel scoreLabel;
+    private JButton[][] fields;
 
     public WindowController(int x, int y) {
         int borderMargin = 20;
         int buttonSize = 30;
+
+        fields = new JButton[x][y];
 
         JFrame window = new JFrame();
         window.setResizable(false);
@@ -56,6 +61,7 @@ public class WindowController {
                 });
 
                 minefield.add(mineButton);
+                fields[i][j] = mineButton;
             }
         }
 
@@ -67,4 +73,24 @@ public class WindowController {
         window.setVisible(true);
     }
 
+    public void updateScore(int score) {
+        this.scoreLabel.setText("Your score: " + score);
+    }
+
+    public void updateField(Field field) {
+        JButton button = fields[field.getPositionX()][field.getPositionY()];
+
+        switch (field.getStatus()) {
+            case COVERED: break;
+            case FLAGGED:
+                button.setText("F");
+                button.setBackground(Color.GRAY);
+                break;
+            case OPENED:
+                button.setBackground(Color.GRAY);
+                break;
+            case REVEALD:
+                break;
+        }
+    }
 }
