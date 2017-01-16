@@ -112,7 +112,10 @@ public class WindowController {
                 button.setText("F");
                 break;
             case OPENED:
-                button.setText(String.valueOf(field.getNumber()));
+                if(field.getNumber() != 0) {
+                    button.setText(String.valueOf(field.getNumber()));
+                }
+
                 button.setEnabled(false);
                 break;
         }
