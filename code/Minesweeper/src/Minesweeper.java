@@ -60,14 +60,21 @@ public class Minesweeper {
 		Field field = getFieldByCoordinates(xPosition, yPosition);
 
 		if(isRightClick) {
-			field.setStatus(Field.Status.FLAGGED);
+			if(field.getStatus() == Field.Status.FLAGGED) {
+				field.setStatus(Field.Status.COVERED);
+			} else {
+				field.setStatus(Field.Status.FLAGGED);
+			}
 		} else {
-			if(field.getType() != Field.Type.BOMB) {
-				calculateNumber(field);
-				field.setStatus(Field.Status.OPENED);
+			if(field.getStatus() != Field.Status.FLAGGED) {
 
-				if(field.getNumber() == 0) {
-					revealNeighbors(field);
+				if (field.getType() != Field.Type.BOMB) {
+					calculateNumber(field);
+					field.setStatus(Field.Status.OPENED);
+
+					if (field.getNumber() == 0) {
+						revealNeighbors(field);
+					}
 				}
 			}
 		}
@@ -126,9 +133,10 @@ public class Minesweeper {
 			}
 
 			calculateNumber(neighborField);
+			neighborField.setStatus(Field.Status.OPENED);
+			windowController.updateField(neighborField);
+
 			if(neighborField.getNumber() == 0) {
-				neighborField.setStatus(Field.Status.OPENED);
-				windowController.updateField(neighborField);
 				revealNeighbors(neighborField);
 			}
 		}

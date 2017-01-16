@@ -69,7 +69,6 @@ public class WindowController {
 
                         if (pressed) {
                             minesweeper.clickField(ii, jj, SwingUtilities.isRightMouseButton(e));
-                            System.out.println("clicked");
                         }
                         pressed = false;
 
@@ -107,18 +106,20 @@ public class WindowController {
         }
 
         switch (field.getStatus()) {
-            case COVERED: break;
+            case COVERED:
+                return;
             case FLAGGED:
                 button.setText("F");
-                button.setEnabled(false);
                 break;
             case OPENED:
                 button.setText(String.valueOf(field.getNumber()));
+                button.setEnabled(false);
                 break;
         }
 
-        if (field.getType() == Field.Type.BOMB) {
+        if (field.getType() == Field.Type.BOMB && field.getStatus() != Field.Status.COVERED && field.getStatus() != Field.Status.FLAGGED) {
             button.setText("B");
+            button.setEnabled(false);
         }
     }
 }
