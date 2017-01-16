@@ -56,7 +56,53 @@ public class Minesweeper {
 		return null;
 	}
 
-	public void clickField(int xPosition, int yPosition) {
-		windowController.updateField(getFieldByCoordinates(xPosition, yPosition));
+	public void clickField(int xPosition, int yPosition, boolean isRightClick) {
+		Field field = getFieldByCoordinates(xPosition, yPosition);
+		if(isRightClick) {
+			field.setStatus(Field.Status.FLAGGED);
+		} else {
+			if(field.getType() != Field.Type.BOMB) {
+				field.setNumber(calculateNumber(field));
+			}
+		}
+
+		windowController.updateField(field);
+	}
+
+	private int calculateNumber(Field field) {
+		List<Field> fields = getAllNeighbors(field);
+		int number = 0;
+
+		for(Field neighborField : fields) {
+			if(neighborField == null) {
+				continue;
+			}
+
+			if(neighborField.getType() == Field.Type.BOMB) {
+				number++;
+			}
+		}
+
+		return number;
+	}
+
+	private List<Field> getAllNeighbors(Field field) {
+		ArrayList<Field> fields = new ArrayList<>();
+
+		//row above
+		fields.add(getFieldByCoordinates(field.getPositionX() - 1, field.getPositionY() - 1));
+		fields.add(getFieldByCoordinates(field.getPositionX(), field.getPositionY() - 1));
+		fields.add(getFieldByCoordinates(field.getPositionX() + 1, field.getPositionY() - 1));
+
+		//same row
+		fields.add(getFieldByCoordinates(field.getPositionX() - 1, field.getPositionY()));
+		fields.add(getFieldByCoordinates(field.getPositionX() + 1, field.getPositionY()));
+
+		//row below
+		fields.add(getFieldByCoordinates(field.getPositionX() - 1, field.getPositionY() + 1));
+		fields.add(getFieldByCoordinates(field.getPositionX(), field.getPositionY() + 1));
+		fields.add(getFieldByCoordinates(field.getPositionX() + 1, field.getPositionY() + 1));
+
+		return fields;
 	}
 }

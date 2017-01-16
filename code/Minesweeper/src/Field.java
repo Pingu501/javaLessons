@@ -21,12 +21,15 @@ public class Field {
 	private int positionX;
 	private int positionY;
 
+	private int number;
+
 	public Field(int positionX,int positionY) {
 		this.status = Status.COVERED;
 		this.type = Type.EMPTY;
 
 		this.positionX = positionX;
 		this.positionY = positionY;
+		number = 0;
 	}
 
 	public int getPositionX() {
@@ -47,5 +50,13 @@ public class Field {
 
 	public void setType(Type type) {
 		this.type = type;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
 	}
 }

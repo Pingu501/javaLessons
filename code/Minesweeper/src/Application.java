@@ -11,7 +11,7 @@ public class Application {
 		game.initGame();
 	}
 
-	public static void fieldClicked(int xPosition, int yPosition) {
-		game.clickField(xPosition, yPosition);
+	public static void fieldClicked(int xPosition, int yPosition, boolean isRightClick) {
+		game.clickField(xPosition, yPosition, isRightClick);
 	}
 }
