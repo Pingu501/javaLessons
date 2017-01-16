@@ -75,6 +75,8 @@ public class Minesweeper {
 					if (field.getNumber() == 0) {
 						revealNeighbors(field);
 					}
+				} else {
+					field.setStatus(Field.Status.OPENED);
 				}
 			}
 		}

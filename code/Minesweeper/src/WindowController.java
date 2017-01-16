@@ -1,13 +1,7 @@
-import oracle.jvm.hotspot.jfr.JFR;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.*;
-import java.util.List;
 
 /**
  * Created by Max on 15.01.17.
@@ -49,6 +43,7 @@ public class WindowController {
                 mineButton.setMaximumSize(new Dimension(buttonSize, buttonSize));
                 mineButton.setOpaque(true);
                 mineButton.setPreferredSize(mineButton.getMaximumSize());
+                mineButton.setBackground(Color.GRAY);
 
                 int ii = i;
                 int jj = j;
@@ -107,9 +102,10 @@ public class WindowController {
 
         switch (field.getStatus()) {
             case COVERED:
-                return;
+                break;
             case FLAGGED:
                 button.setText("F");
+                button.setForeground(Color.BLACK);
                 break;
             case OPENED:
                 if(field.getNumber() != 0) {
@@ -123,6 +119,7 @@ public class WindowController {
         if (field.getType() == Field.Type.BOMB && field.getStatus() != Field.Status.COVERED && field.getStatus() != Field.Status.FLAGGED) {
             button.setText("B");
             button.setEnabled(false);
+            button.setForeground(Color.RED);
         }
     }
 }
