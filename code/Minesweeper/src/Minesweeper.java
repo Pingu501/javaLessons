@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,14 +9,20 @@ import java.util.Random;
  */
 public class Minesweeper {
 
-	private List<Field> fields = new ArrayList<>();
+	private GameManager manager;
+	private List<Field> fields;
 	private WindowController windowController;
 
-	public void initGame() {
+	public Minesweeper(GameManager manager) {
+		this.manager = manager;
+	}
+
+	public void initGame(Point windowLocation) {
 		int width = 10;
 		int height = 10;
 
-		windowController = new WindowController(width, height, this);
+		fields = new ArrayList<>();
+		windowController = new WindowController(width, height, this, windowLocation);
 		generateFields(width, height);
 		placeBombs(width, height);
 	}
@@ -22,7 +30,8 @@ public class Minesweeper {
 	private void generateFields(int width, int height) {
 		for(int i = 0; i < width; i++) {
 			for(int j = 0; j < height; j++) {
-				fields.add(new Field(i, j));
+				Field field = new Field(i, j);
+				fields.add(field);
 			}
 		}
 	}
@@ -76,7 +85,18 @@ public class Minesweeper {
 						revealNeighbors(field);
 					}
 				} else {
-					field.setStatus(Field.Status.OPENED);
+					int restart = -1;
+
+					while (restart == -1) {
+						restart = JOptionPane.showConfirmDialog(null, "Do you wish to restart now?", "The bomb exploded!", JOptionPane.YES_NO_OPTION);
+					}
+
+					// Return value for the "Yes" button
+					if (restart == 0) {
+						restartGame();
+					} else {
+						field.setStatus(Field.Status.OPENED);
+					}
 				}
 			}
 		}
@@ -142,5 +162,14 @@ public class Minesweeper {
 				revealNeighbors(neighborField);
 			}
 		}
+	}
+
+	public void restartGame() {
+		Point windowLocation = windowController.hideWindow();
+		initGame(windowLocation);
+	}
+
+	public GameManager getManager() {
+		return manager;
 	}
 }

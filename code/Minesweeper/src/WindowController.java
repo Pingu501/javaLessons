@@ -1,17 +1,24 @@
+import com.sun.corba.se.impl.oa.poa.POAImpl;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 /**
  * Created by Max on 15.01.17.
  */
 public class WindowController {
 
+    private JFrame window;
     private Minesweeper minesweeper;
     private JButton[][] fields;
 
-    public WindowController(int x, int y, Minesweeper minesweeper) {
+    public WindowController(int x, int y, Minesweeper minesweeper, Point windowLocation) {
         this.minesweeper = minesweeper;
 
         int borderMargin = 20;
@@ -19,9 +26,38 @@ public class WindowController {
 
         fields = new JButton[x][y];
 
-        JFrame window = new JFrame();
+        // Create menu bar and items..
+        MenuBar bar = new MenuBar();
+        Menu menu = new Menu("File");
+
+
+        MenuItem restartItem = new MenuItem("Restart Game");
+        restartItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                minesweeper.restartGame();
+            }
+        });
+
+        MenuItem startItem = new MenuItem("Start new Game");
+        startItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Point windowLocation = window.getLocation();
+                minesweeper.getManager().newGame(new Point(windowLocation.x + 20, windowLocation.y + 20));
+            }
+        });
+
+        menu.add(startItem);
+        menu.add(restartItem);
+
+        bar.add(menu);
+
+        window = new JFrame();
+        window.setMenuBar(bar);
         window.setResizable(false);
         window.setTitle("Minesweeper");
+        window.setLocation(windowLocation);
 
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.PAGE_AXIS));
@@ -102,10 +138,16 @@ public class WindowController {
 
         switch (field.getStatus()) {
             case COVERED:
+                button.setIcon(null);
                 break;
             case FLAGGED:
-                button.setText("F");
-                button.setForeground(Color.BLACK);
+                try {
+                    Image flag = ImageIO.read(getClass().getResource("resources/flag.png"));
+                    flag = flag.getScaledInstance(15, 15, 0);
+                    button.setIcon(new ImageIcon(flag));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
             case OPENED:
                 if(field.getNumber() != 0) {
@@ -122,4 +164,12 @@ public class WindowController {
             button.setForeground(Color.RED);
         }
     }
+
+    public Point hideWindow() {
+        Point point = this.window.getLocation();
+        this.window.dispose();
+
+        return point;
+    }
+
 }

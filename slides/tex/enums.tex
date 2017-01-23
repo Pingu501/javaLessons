@@ -1,0 +1,57 @@
+\input{res/slide_header.tex}
+\usepackage{multicol}
+
+\title{IO}
+\subtitle{Input/Output}
+\author{Nico Westerbeck}
+\date{\today}
+
+
+\begin{document}
+
+\titlepage
+
+\section{Enumerations}
+\begin{frame}[fragile]{Enumerations}
+\begin{lstlisting}
+public enum Colors {
+	RED,
+	GREEN,
+	BLUE;
+}
+// ...
+Colors myColor = Colors.RED;
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Enumerations}
+\begin{lstlisting}
+System.out.println(Colors.RED.name());
+System.out.println(Colors.RED.ordinal());
+\end{lstlisting}
+% Let them guess the effect of these methods
+% Outline parallel to classes...
+\end{frame}
+
+\begin{frame}[fragile]{Enumerations}
+\begin{lstlisting}
+public enum Colors {
+	RED(255, 0, 0),
+	GREEN(0, 255, 0),
+	BLUE(0, 0, 255);
+	
+	private int r, g, b;
+	private Colors(int r, int g, int b) {
+		this.r = r;
+		this.g = g;
+		this.b = b;
+	}
+	
+	public String getRGB() {
+		return "R:" + r + " G:" + g + " B:" + b;
+	}
+}
+\end{lstlisting}
+\end{frame}
+
+\end{document}
