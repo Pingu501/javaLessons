@@ -7,7 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Created by Max on 15.01.17.
@@ -30,7 +31,6 @@ public class WindowController {
         MenuBar bar = new MenuBar();
         Menu menu = new Menu("File");
 
-
         MenuItem restartItem = new MenuItem("Restart Game");
         restartItem.addActionListener(new ActionListener() {
             @Override
@@ -48,8 +48,76 @@ public class WindowController {
             }
         });
 
+        MenuItem saveItem = new MenuItem("Save game");
+        saveItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser chooser = new JFileChooser();
+                int returnValue = chooser.showSaveDialog(window);
+
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    File savedFile = chooser.getSelectedFile();
+
+                    if (savedFile.exists()) {
+                        System.out.println("File already exists!");
+                        return;
+                    }
+
+                    try {
+                        BufferedWriter writer = new BufferedWriter(new FileWriter(savedFile));
+                        String data = minesweeper.saveGame();
+                        writer.write(data, 0, data.length());
+                        writer.close();
+                    } catch (IOException e1) {
+                        System.out.println("Something went wrong");
+                    }
+                }
+            }
+        });
+
+        MenuItem loadItem = new MenuItem("Load game");
+        loadItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser chooser = new JFileChooser();
+                int returnValue = chooser.showOpenDialog(WindowController.this.window);
+
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    File file = chooser.getSelectedFile();
+
+                    BufferedReader reader = null;
+                    try {
+                        reader = new BufferedReader(new FileReader(file));
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                    }
+
+                    ArrayList<String> data = new ArrayList<String>();
+                    String line = "";
+
+                    while (line != null) {
+                        if (!line.equals("")) {
+                            data.add(line);
+                        }
+
+                        try {
+                            line = reader.readLine();
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+
+                    Point windowLocation = window.getLocation();
+                    Minesweeper game = minesweeper.getManager().newGame(new Point(windowLocation.x + 20, windowLocation.y + 20));
+                    game.loadGame(data);
+                }
+            }
+        });
+
         menu.add(startItem);
         menu.add(restartItem);
+        menu.add(saveItem);
+        menu.add(loadItem);
 
         bar.add(menu);
 

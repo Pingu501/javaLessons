@@ -13,10 +13,12 @@ public class GameManager {
         newGame(new Point(0,0));
     }
 
-    public void newGame(Point location) {
+    public Minesweeper newGame(Point location) {
         Minesweeper game = new Minesweeper(this);
         game.initGame(location);
         games.add(game);
+
+        return game;
     }
 
 }

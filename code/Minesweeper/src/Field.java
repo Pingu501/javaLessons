@@ -5,7 +5,7 @@ public class Field {
 
 	public enum Type {
 		EMPTY,
-		BOMB,
+		BOMB
 	}
 
 	public enum Status {

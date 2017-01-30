@@ -172,4 +172,31 @@ public class Minesweeper {
 	public GameManager getManager() {
 		return manager;
 	}
+
+	public String saveGame() {
+		String saveString = "";
+
+		//This only works until type and status are < 10 !
+		for (Field field: this.fields) {
+			saveString += field.getType().ordinal() + "" + field.getStatus().ordinal() + "" + field.getNumber();
+			saveString += "\n";
+		}
+
+		return saveString;
+	}
+
+	public void loadGame(ArrayList<String> data) {
+		System.out.println(this.fields);
+
+		for (int i = 0; i < this.fields.size(); i++) {
+			Field field = this.fields.get(i);
+			String fieldData = data.get(i);
+
+			field.setType(Field.Type.values()[Integer.decode(fieldData.substring(0, 1))]);
+			field.setStatus(Field.Status.values()[Integer.decode(fieldData.substring(1, 2))]);
+			field.setNumber(Integer.decode(fieldData.substring(2)));
+
+			windowController.updateField(field);
+		}
+	}
 }
